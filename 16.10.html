@@ -1,0 +1,595 @@
+<!--    Ruben van de Wiel, 581068
+        Scripting 4 Designers
+        March 20th, 2020            !-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Battleships</title>
+    <style>
+        /* This is the CSS - Section of my code where HTML content is being designed */
+        body {
+            background-color: darkgrey;
+            color: white;
+            font-weight: 600;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 2;
+        }
+
+        /* This code is being used to position both canvasses relative to eachother, so they stand next to eachother */
+        canvas {
+            position: relative;
+            margin-left: 1%;
+            background-color: rgb(32, 106, 202);
+            border-top: 3px solid rgb(32, 106, 202);
+            border-left: 3px solid rgb(32, 106, 202);
+
+        }
+
+        /* This code is being used to center the canvassed in the middle of the screen */
+        .canvasDiv {
+            text-align: center;
+        }
+
+        /* This code is being used to center the text - above the interactive canvasses - in the middle */
+        .titleText {
+            text-align: center;
+            font-size: 3.2em;
+        }
+
+        /* This code is being used to center the hint & buttons in the middle of the screen */
+        .informationDiv {
+            position: absolute;
+            bottom: 6%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            line-height: 2.5;
+            font-size: 1.6em;
+        }
+
+        /* The code below is being used to position the EnemyShips Sunk correctly on the right of the screen, next to the right canvas */
+        .enemyInfo {
+            position: absolute;
+            text-align: center;
+            top: 10%;
+            right: 27px;
+            font-size: 1.6em;
+        }
+
+        /* The code below is being used to position the MyShips Sunk correctly on the left of the screen, next to the left canvas */
+        .myInfo {
+            position: absolute;
+            text-align: center;
+            top: 10%;
+            left: 27px;
+            font-size: 1.6em;
+        }
+
+        /* The four pieces of code below represents the button design code (with four states, which are Hover, Active and Disabled) */
+        button {
+            outline: 0;
+            font-size: 0.75em;
+            font-weight: 600;
+            background: #fff;
+            margin-right: 100px;
+            margin-left: 100px;
+            border: none;
+            padding: 0.5em 1em;
+            transition: all .3s ease-out;
+            box-shadow: inset 0 -8px 0 0 rgba(0, 0, 0, .2),
+                1px 1px 0 0 rgb(116, 116, 116),
+                2px 2px 0 0 rgb(116, 116, 116),
+                3px 3px 0 0 rgb(116, 116, 116),
+                4px 4px 0 0 rgb(116, 116, 116),
+                5px 5px 0 0 rgb(116, 116, 116),
+                6px 6px 0 0 rgb(116, 116, 116),
+                7px 7px 0 0 rgb(116, 116, 116),
+                8px 8px 0 0 rgb(116, 116, 116),
+                9px 9px 0 0 rgb(116, 116, 116);
+        }
+
+        button:hover {
+            color: #444;
+        }
+
+        button:active {
+            color: rgb(116, 116, 116);
+            box-shadow: inset 0 -4px 0 0 rgba(0, 0, 0, .2),
+                1px 1px 0 0 rgb(116, 116, 116),
+                2px 2px 0 0 rgb(116, 116, 116),
+                3px 3px 0 0 rgb(116, 116, 116),
+                4px 4px 0 0 rgb(116, 116, 116),
+                5px 5px 0 0 rgb(116, 116, 116);
+        }
+
+        button:disabled {
+            color: rgb(116, 116, 116);
+            box-shadow: inset 0 -4px 0 0 rgba(0, 0, 0, .2),
+                1px 1px 0 0 rgb(116, 116, 116),
+                2px 2px 0 0 rgb(116, 116, 116),
+                3px 3px 0 0 rgb(116, 116, 116),
+                4px 4px 0 0 rgb(116, 116, 116),
+                5px 5px 0 0 rgb(116, 116, 116);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- This is where the HTML code starts -->
+    <div class="titleText">BATTLESHIPS</div>
+    <!-- In this div are both canvasses placed in order to center them in the middle of the screen by using the 'class' attachment -->
+    <div class=canvasDiv>
+        <canvas id="mySea" width=600 height=600></canvas>
+        <canvas id="enemySea" width=600 height=600></canvas>
+    </div>
+    <!-- In this div are both interactive buttons and the hint text placed. This has been done to center all this content in the middle, below the canvasses -->
+    <div class=informationDiv>
+        <div id="hintText">Place horizontal Patrol Ship of length 2</div>
+        <button id="placeHorizontalBoatButton" class=button>Place boats horizontal</button>
+        <button id="placeVerticalBoatButton" class=button>Place boats vertical</button>
+        <div id="logText">...</div>
+    </div>
+    <!-- In th div's are both of the informative texts to see the current progress of the game -->
+    <div id="enemyShipsText" class=enemyInfo>Enemy ships sunk: <br> 0 / 5</div>
+    <div id="myShipsText" class=myInfo>My ships sunk: <br> 0 / 5</div>
+    <script>
+
+        // These global variables are being used throughout the code (in multiple functions)
+        // The arrays below are being used to store the placed ships, hits, and misses for both eh player (mySquares) and the enemy (enemySquares)
+        var enemySquares = []
+        var mySquares = []
+
+        // the (ene)myCanvas and (ene)myContext global variables refer to the canvas and drawing style (2d) for both the player and the enemy
+        var myCanvas = document.getElementById("mySea")
+        var myContext = myCanvas.getContext("2d")
+
+        var enemyCanvas = document.getElementById("enemySea")
+        var enemyContext = enemyCanvas.getContext("2d")
+
+        var gapSize = 3   // pixels between each square
+        var numRows = 12  // number of squares that fit in the canvas vertically
+        var numColumns = numRows  // a sea always has equal length and width
+        var squareSize = getSquareSize() // this function is being used to scale the amound of squares correctly inside of the canvas
+
+        // This array consists of all the ship information in order to make the game work (shipData.size and shipData.name)
+        var shipData = [{ size: 2, name: "Patrol Ship" },
+        { size: 5, name: "Aircraft Carrier" },
+        { size: 4, name: "Battleship" },
+        { size: 3, name: "Torpedo Submarine" },
+        { size: 3, name: "Nuclear Submarine" },]
+
+        // These global variables are being used to 'count' the the ships. It's being used to place the correct boat and to give the correct hints.
+        var myShipIndex = 0
+        var enemyShipIndex = 0
+
+        // This global variable is being used by the buttons in the UI in order to change the orientation to either vertical or horizontal
+        var orientation = "horizontal"
+
+        // These global variables are being used to keep track of the total amount of sunkenBoats for both the enemy and the player.
+        var mySunkCounter = 0
+        var enemySunkCounter = 0
+
+
+        // THIS IS WHERE THE GAME SETUP BEGINS //
+
+
+        // Draws the Player's sea on the left canvas. Also fills the mySquares array
+        function createMySea() {
+            for (var rowNumber = 0; rowNumber < numRows; rowNumber++) {
+                for (columnNumber = 0; columnNumber < numRows; columnNumber++) {
+                    var square = createFriendlyGridSquare(rowNumber, columnNumber)
+                    square.draw(myContext)
+                    mySquares.push(square)
+                }
+            }
+        }
+
+        // These functions (both FriendlySquares and EnemySquares) creates "square objects" that contain all properties of a given square
+        // Function should only be used for squares of the user's sea
+        function createFriendlyGridSquare(rowNumber, columnNumber) {
+            var square = {
+                rowNr: rowNumber,
+                columnNr: columnNumber,
+                state: "water",
+                getColor: mySeaColors,                      // The "getColor" returns the color the square based on state. 
+                draw: drawSquare,                           // The "draw" method draws the square on the canvas.
+                drawSymbol: drawSymbol,                     // The "drawSymbol" method returns either a Cross of a Circle inside of a clicked square, depending on the state it gets.
+                changeState: changeSquareStateAndRedraw,    // The "changeState" method changes the square into the new state and redraws it.
+                isClicked: coordinatesOverlap               // The "isClicked" returns true if the coordinates passed as a parameter overlap the square.
+            }
+            return square
+        }
+
+        // Function should only be used for squares of the enemy's sea.
+        function createEnemyGridSquare(rowNumber, columnNumber) {
+            var square = {
+                rowNr: rowNumber,
+                columnNr: columnNumber,
+                state: "water",
+                getColor: enemySeaColors,                   // The "getColor" returns the color the square based on state.
+                draw: drawSquare,                           // The "draw" method draws the square on the canvas.
+                drawSymbol: drawSymbol,                     // The "drawSymbol" method returns either a Cross of a Circle inside of a clicked square, depending on the state it gets.
+                changeState: changeSquareStateAndRedraw,    // The "changeState" method changes the square into the new state and redraws it.
+                isClicked: coordinatesOverlap               // The "isClicked" returns true if the coordinates passed as a parameter overlap the square.
+            }
+            return square
+        }
+
+        // Method: draws a square on a canvas context.
+        function drawSquare(context, text) {
+            var x = this.columnNr * (squareSize + gapSize)
+            var y = this.rowNr * (squareSize + gapSize)
+            context.beginPath()
+            context.fillStyle = this.getColor()
+            context.rect(x, y, squareSize, squareSize)
+            context.fill()
+            // Onderstaande regels kun je gebruiken om (korte) tekst te tonen in vakje.
+            // Gebruikt de 'text' parameter, maar die blijft optioneel.
+            context.font = "bold 12px sans-serif"
+            context.fillStyle = "rgba(255, 255, 255, 0.5)" // semi-transparent white 
+            var squareIndex = this.rowNr * numColumns + this.columnNr
+            context.fillText(squareIndex, x + 5, y + 15)
+        }
+
+        // This function calcualates the size of a squares inside of a canvas
+        function getSquareSize() {
+            var canvasWidth = myCanvas.width
+            var optimalSquareSize = (canvasWidth / numRows) - gapSize
+            return optimalSquareSize
+        }
+
+        //  Method: returns true if the given coordinates overlap the square
+        function coordinatesOverlap(x, y) {
+            var squareX = this.columnNr * (squareSize + gapSize)
+            var squareY = this.rowNr * (squareSize + gapSize)
+            var fitsHorizontally = x >= squareX && x <= squareX + squareSize
+            var fitsVertically = y >= squareY && y <= squareY + squareSize
+            return fitsHorizontally && fitsVertically
+        }
+
+        // Method: In the player's sea, boats are yellow
+        function mySeaColors() {
+            if (this.state == "water") {
+                return "blue"
+            } else if (this.state == "miss") {
+                return "red"
+            } else if (this.state == "hit") {
+                return "green"
+            } else if (this.state == "ship") {
+                return "yellow"
+            }
+        }
+
+        // The "clickEvent" parameter refers to the "click event" triggering this function
+        // This event is an object containing all sorts of information concerning the click. Coordinates is one of those pieces of information
+        // The function attempts to place a boat
+        // If there is no more boat to be placed, the function draws the enemy sea and starts the game
+        function gameSetupRound(clickEvent) {
+            var mouseX = clickEvent.offsetX
+            var mouseY = clickEvent.offsetY
+            //Check to sea whether or not the click was on one of the squares
+            for (var i = 0; i < mySquares.length; i++) {
+                if (mySquares[i].isClicked(mouseX, mouseY)) {
+                    writeHint()                                                             // this will write which boat + size the player can place
+                    placeBoat(i)                                                            // this (if-function) will actualy place the boat
+                    if (myShipIndex == shipData.length) {
+                        createEnemySea()                                                    // "if" all the ships are placed, the enemy sea will be created
+                        enemyBoatGenerator()                                                // And the enemy will place it's boats.
+                        document.getElementById("hintText").innerHTML = "Throw bombs to hit enemy ships!"
+                        document.getElementById("enemySea").onclick = playRound             // This makes it that if the player clicks an enemy square, he can actually play
+                        document.getElementById("mySea").onclick = ""
+                    }
+                }
+            }
+        }
+
+        // Draws a boat, starting on the firstSquareIndex but with a length depending on the length of the current ship
+        function placeBoat(firstSquareIndex) {
+            var currentShipSize = shipData[myShipIndex].size
+            if (isValidPosition(firstSquareIndex, currentShipSize, mySquares)) {                    // if the position is validated
+                if (orientation == "horizontal") {                                                  // if orientation is horizontal
+                    for (var i = firstSquareIndex; i < firstSquareIndex + currentShipSize; i++) {   // for all of the squares in the array
+                        mySquares[i].changeState("ship", myContext)                                 // change state to ship
+                        mySquares[i].name = shipData[myShipIndex].name                              // the mySquares[] array gets updated with the shipName
+                    }
+                } else {                                                                                        // if the position is vertical
+                    for (var i = firstSquareIndex; i < firstSquareIndex + (currentShipSize * 12); i += 12)      // factor 12 is used because 1 row = 12 squares
+                        mySquares[i].changeState("ship", myContext)
+                    mySquares[i].name = shipData[myShipIndex].name
+                }
+                myShipIndex += 1
+                writeHint()
+            }
+        }
+
+        // Function checks whether a boat may be placed on a certain starting position. Returns 'True' if valid
+        function isValidPosition(firstSquareIndex, currentShipSize, squareArray) {
+            var isValid = true
+            if (orientation == "horizontal") {                                                          // Horizontal positionins is based on columNumbers
+                //ships should not cross the border
+                var colNr = squareArray[firstSquareIndex].columnNr
+                var numAvailableSquares = numColumns - colNr
+                if (numAvailableSquares < currentShipSize) {
+                    isValid = false
+                }
+                //ships shouldn't overlap
+                for (var i = firstSquareIndex; i < firstSquareIndex + currentShipSize; i++) {
+                    if (squareArray[i] != undefined && squareArray[i].state == "ship") {
+                        isValid = false
+                    }
+                }
+            } else if (orientation == "vertical") {                                                     // Vertical positioning is based on rowNumbers
+                //ships should not cross the border
+                var rowNr = squareArray[firstSquareIndex].rowNr
+                var numAvailableSquares = numRows - rowNr
+                if (numAvailableSquares < currentShipSize) {
+                    isValid = false
+                }
+                //ships shouldn't overlap
+                for (var i = firstSquareIndex; i < firstSquareIndex + currentShipSize * 12; i += 12) {
+                    if (squareArray[i] != undefined && squareArray[i].state == "ship") {
+                        isValid = false
+                    }
+                }
+            }
+            return isValid
+        }
+
+        // This function is triggered by placing a ship. It Checks which shipHint it should display in the HTML
+        function writeHint() {
+            var shipHint = 0
+            if (myShipIndex >= shipData.length) {
+                shipHint = 0
+            }
+            else
+                shipHint = myShipIndex
+            document.getElementById("hintText").innerHTML = "Place " + orientation + " " + shipData[shipHint].name + " of length " + shipData[shipHint].size
+        }
+
+        // Draws the enemy sea based on the pre-filled enemySquares array. Also inserts methods into the objects in that array
+        function createEnemySea() {
+            for (var rowNumber = 0; rowNumber < numRows; rowNumber++) {
+                for (columnNumber = 0; columnNumber < numRows; columnNumber++) {
+                    var square = createEnemyGridSquare(rowNumber, columnNumber)
+                    square.draw(enemyContext)
+                    enemySquares.push(square)
+                }
+            }
+            document.getElementById("placeVerticalBoatButton").disabled = true                  // disables the buttons when game starts as they are no longer needed
+            document.getElementById("placeHorizontalBoatButton").disabled = true
+        }
+
+        // Method: In the enemy sea, boats are blue (same as the sea)
+        function enemySeaColors() {
+            if (this.state == "water") {
+                return "blue"
+            } else if (this.state == "miss") {
+                return "red"
+            } else if (this.state == "hit") {
+                return "green"
+            } else if (this.state == "ship") {
+                return "blue"
+            }
+        }
+
+        // This function generates a random number between and will place it's boats in random places and orientations.
+        function enemyBoatGenerator() {
+            for (enemyShipIndex; enemyShipIndex < shipData.length; enemyShipIndex) {
+                var randomNumber = Math.floor(Math.random() * numRows * numRows)                // generates number between 0 - 143 for the array objects
+                var randomOrientation = Math.floor(Math.random() * 2)                           // gives either 1 (vertical) or 0 (horizontal) for the orientation
+                if (randomOrientation == 0) {
+                    orientation = "horizontal"
+                } else {
+                    orientation = "vertical"
+                }
+                placeEnemyBoat(randomNumber)                                                    // Places the boat based on the random numbers
+                console.log("Start throwing bombs!")
+            }
+        }
+
+        // This function will change the state of the squared based on the orientation of the boat.
+        function placeEnemyBoat(firstSquareIndex) {
+            var currentShipSize = shipData[enemyShipIndex].size
+            if (isValidPosition(firstSquareIndex, currentShipSize, enemySquares)) {                             // if the position is valid
+                if (orientation == "horizontal") {                                                              // if the orientation is horizontal
+                    for (var i = firstSquareIndex; i < firstSquareIndex + currentShipSize; i++) {               // for each object/square in the array
+                        enemySquares[i].changeState("ship", enemyContext)                                       // change the state to "ship"
+                        enemySquares[i].name = shipData[enemyShipIndex].name                                    // change object name in array to shipname
+                    }
+                } else {                                                                                        // if the orientation is vertical
+                    for (var i = firstSquareIndex; i < firstSquareIndex + currentShipSize * 12; i += 12) {
+                        enemySquares[i].changeState("ship", enemyContext)
+                        enemySquares[i].name = shipData[enemyShipIndex].name
+                    }
+                }
+                enemyShipIndex += 1
+            }
+        }
+
+
+        // THIS IS WHERE THE GAME SETUP HAS ENDED //
+
+
+        // THIS IS WHERE THE GAME STARTS //
+
+
+        // This is the actual game. Function is triggered with a clickEvent
+        // The clickEvent parameter is the click event containing the coordinates of the click
+        function playRound(clickEvent) {
+            var mouseX = clickEvent.offsetX
+            var mouseY = clickEvent.offsetY
+            if (playHumanTurn(mouseX, mouseY) == "undefined") {     // if the clickevent is undefined, nothing happens
+            } else { playComputerTurn() }                           // if it is, CPU will play and interface will be updated
+            enemySunkCounter = 0                                    // the sunkCounters (global variables) are reset to 0 everytime. otherwise 
+            mySunkCounter = 0                                       // because the getBoatData() functions work on clickEvents.
+            shipData.forEach(getMyBoatData)                         // .forEach command works like a for-loop (for each object in the shipData Array)
+            shipData.forEach(getEnemyBoatData)
+            updateUI()
+        }
+
+        // this function updates the UI after every clickEvent.
+        function updateUI() {
+            document.getElementById("enemyShipsText").innerHTML = "Enemy ships sunk: <br> " + mySunkCounter + " / 5"
+            document.getElementById("myShipsText").innerHTML = "My ships sunk: <br> " + enemySunkCounter + " / 5"
+        }
+
+        // Plays a turn human turn based on x and y coordinates (coming from a click)
+        function playHumanTurn(mouseX, mouseY) {
+            for (var i = 0; i < enemySquares.length; i++) {
+                if (enemySquares[i].isClicked(mouseX, mouseY)) {
+                    if (isBombValid(enemySquares[i])) {                         // function is modified to look if the bomb location isValid or not
+                        if (enemySquares[i].state == "water") {
+                            enemySquares[i].changeState("miss", enemyContext)
+                            document.getElementById("logText").innerHTML = "___"
+                        } else if (enemySquares[i].state == "ship") {
+                            enemySquares[i].changeState("hit", enemyContext)
+                            document.getElementById("logText").innerHTML = "You've hit an enemy ship!"
+                        }
+                    } else return "undefined"                                   // if it's not, return undefined
+                }
+            }
+        }
+
+        // Function to check whether the clickEvent(square) is a valid position to place a bomb. Returns either true or false
+        function isBombValid(square) {
+            var valid = true
+            if (square.state == "miss" || square.state == "hit") {
+                valid = false
+                console.log("You can't bomb the same spot twice!")
+            }
+            return valid
+        }
+
+        // Method: changes the state of the square and redraws it
+        function changeSquareStateAndRedraw(newState, context) {
+            this.state = newState
+            this.draw(context)
+            this.drawSymbol(context)
+        }
+
+        // Method: changes the state of the square and redraws it with the correct symbol in it
+        function drawSymbol(context) {
+            var x = this.columnNr * (squareSize + gapSize)
+            var x2 = x + 47         // 47 is the pixel size of each square
+            var y = this.rowNr * (squareSize + gapSize)
+            var y2 = y + 47         // 47 is the pixel size of each square
+            var status = this.state
+            console.log(status)
+            if (status == "hit") {
+                context.strokeStyle = "DarkGreen"
+                context.beginPath()
+                context.arc(x + 23, y + 23, 22, 0, Math.PI * 2, false)          // code to draw a perfect circle
+                context.fillStyle = "DarkGreen"
+                context.fill()
+                context.stroke()
+            } else if (status == "miss") {
+                context.strokeStyle = "RoyalBlue"
+                context.lineWidth = 3;
+                context.beginPath()
+                context.moveTo(x, y)
+                context.lineTo(x2, y2)
+                context.stroke()
+                context.beginPath()
+                context.moveTo(x2, y)
+                context.lineTo(x, y2)
+                context.stroke()
+
+            }
+        }
+
+        //  The computer throws a bomb at random at your sea
+        function playComputerTurn() {
+            var targetIndex = Math.floor(Math.random() * numRows * numColumns)      // generates a number between 0-143
+            if (isBombValid(mySquares[targetIndex])) {                              // checks if the random location is a valid location to place a bomb
+                if (mySquares[targetIndex].state == "water") {                      // if true it checks if the state is either water or miss and will place 'hit or miss'
+                    mySquares[targetIndex].changeState("miss", myContext)
+                } else if (mySquares[targetIndex].state == "ship") {
+                    mySquares[targetIndex].changeState("hit", myContext)
+                    document.getElementById("logText").innerHTML = "Your " + mySquares[targetIndex].name + " has been hit!"
+                }
+            } else playComputerTurn()
+        }
+
+        // the getBoatData functions will get data by each clickEvent. 
+        // this function will keep track of howmany boats have been sunk and howmany hits you (or the enemy) has made
+        function getEnemyBoatData(input) {
+            var boatName = input.name
+            var hits = 0
+            var location = []
+            for (i = 0; i < enemySquares.length; i++) {                 // This for and if-loops will place the enemy placed ships into the enemyShips array
+                if (enemySquares[i].name == boatName) {                 // in order to keep track of it further on an array (location)
+                    location.push(i)
+                }
+            }
+            //console.log(location)
+            for (i = 0; i < location.length; i++) {                     // in this array, when the location becomes 'hit' it will get hits++ hit in local variable
+                if (enemySquares[location[i]].state == "hit") {
+                    hits++
+                }
+            }
+            //console.log(hits)
+            if (hits == input.size) {                                   // when hits == input.size the boat will sink. 
+                console.log("The enemy's " + boatName + " has Sunk!")
+                mySunkCounter++                                         // sunkCounter++ (global variable)
+            } if (mySunkCounter == 5) {
+                alert("You have won the game!")                         // if sunkCounter == 5 player will win the game! 
+            }
+        }
+
+        // the getBoatData functions will get data by each clickEvent. 
+        // this function will keep track of howmany boats have been sunk and howmany hits the CPU (or the player) has made
+        // the description of this function is the same as the getEnemyBoat() function, but for the player
+        function getMyBoatData(input) {
+            var boatName = input.name
+            var hits = 0
+            var location = []
+            for (i = 0; i < mySquares.length; i++) {
+                if (mySquares[i].name == boatName) {
+                    location.push(i)
+                }
+            }
+            //console.log(location)
+            for (i = 0; i < location.length; i++) {
+                if (mySquares[location[i]].state == "hit") {
+                    hits++
+                }
+            }
+            //console.log(hits)
+            if (hits == input.size) {
+                console.log("Your " + boatName + " has Sunk...")
+                enemySunkCounter++
+            }
+            if (enemySunkCounter == 5) {
+                alert("Computer has won the game!")
+            }
+        }
+
+        document.getElementById("mySea").onclick = gameSetupRound                           // when canvas is clicked you can start placing boats
+
+        // Buttons with anonymous functions. when you click the button, the orientation will be either horizontal or vertical and the clicked button will be disabled
+        document.getElementById("placeHorizontalBoatButton").disabled = true
+        document.getElementById("placeHorizontalBoatButton").onclick = function () {
+            orientation = "horizontal"; console.log("orientation set to: horizontal");
+            document.getElementById("placeHorizontalBoatButton").disabled = true;
+            document.getElementById("placeVerticalBoatButton").disabled = false;
+            writeHint()
+        }
+
+        document.getElementById("placeVerticalBoatButton").onclick = function () {
+            orientation = "vertical"; console.log("orientation set to: vertical");
+            document.getElementById("placeHorizontalBoatButton").disabled = false;
+            document.getElementById("placeVerticalBoatButton").disabled = true;
+            writeHint()
+        }
+
+        console.log("Place your Ships!")
+        createMySea()
+
+    </script>
+
+</body>
+
+</html>
