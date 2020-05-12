@@ -5,7 +5,12 @@
 </head>
 
 <body>
-<p>Dit is de advertentiepagina</p>
+    {% for post in adposts %}
+        <h1>{{ post.title }}</h1>
+        <p>Door {{ post.author }} on {{ post.date_posted }}</p>
+        <p>{{ post.content }}</p>
+        <p>{{ post.reward }}</p>
+    {% endfor %}
 </body>
 
 </html>
