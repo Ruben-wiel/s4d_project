@@ -31,6 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    #Eigen apps
+    'website.apps.WebsiteConfig',
+    #Dit zijn standaard Django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
