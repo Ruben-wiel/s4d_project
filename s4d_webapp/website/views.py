@@ -24,8 +24,8 @@ adposts = [
 def home(request):
     return render(request, 'website/home.html')
 
-def about(request):
-    return render(request, 'website/about.html')
+def details(request):
+    return render(request, 'website/details.html', {'title': 'Details'})
 
 def posts(request):
     context = {
@@ -35,3 +35,6 @@ def posts(request):
 
 def account(request):
     return render(request, 'website/account.html')
+
+def about(request):
+    return render(request, 'website/about.html')

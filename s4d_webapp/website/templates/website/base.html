@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% if title %}
+        <title>WEBSITENAAM - {{ title }}</title>
+    {% else %}
+        <title>WEBSITENAAM</title>
+    {% endif %} 
+</head>
+
+<body>
+    {% block content %}{% endblock %}
+</body>
+
+</html>
