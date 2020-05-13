@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Post
 
 
 # Lijst met de postinformatie
@@ -31,7 +32,7 @@ def details(request):
 
 def posts(request):
     context = {
-        'adposts': adposts
+        'adposts': Post.objects.all()
     }
     return render(request, 'website/posts.html', context)
 
