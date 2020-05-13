@@ -31,9 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    #Eigen apps
+    # Eigen apps
     'website.apps.WebsiteConfig',
-    #Dit zijn standaard Django apps
+    # Dit zijn standaard Django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -108,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'CET'  # Amsterdam Timezone ingesteld
 
 USE_I18N = True
 
