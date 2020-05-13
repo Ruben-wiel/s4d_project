@@ -1,0 +1,33 @@
+Bewerken van database met aanmaken posts
+(via python shell)
+Import post class
+>>> python manage.py shell →  opent de python shell
+>>> from blog.models import Post →  import Post class
+>>> from Django.contrib.auth.models import User →  import User dat aangemaakt is via admin
+ 
+>>> user.objects.all() →  QuerySet te zien van alle gebruikers
+>>> user.objects.first() →  Laat eerste object zien in user dictonary
+ 
+>>> user.objects.filter(username=’Ruben’) →  QuerySet van die user te zien
+*>>> user = User.objects.filter(username=’Ruben’).first() →  Maakt variabele aan van die user-object
+>>> user = User.objects.first() →  Geeft de waarde van de ruben user aan de user variabele
+>>> Post.objects.all() →  De QuerySet van de gemaakte posts met Postmethod
+Create post
+>>> post_1 = Post(title=’titel’, content=‘beschrijving post’, reward=’10 koekjes’, author=user*
+>>> post_1.save() →  SAVED POST!!
+Inzien
+>>> Post.objects.all() →  alle gemaakte posts te zien
+
+
+>>> post = Post.objects.first() → eerste object/post toevoegen aan de post variabele
+>>> post.content → content van de post variabele inzien
+>>> post.date_posted → tijd en datum van de post
+>>> post.author → laat de auteur van de post zien
+>>> post.reward → laat de reward zien
+>>> post.author.email → laat email van user zien
+>>> user.post_set → database gegevens
+>>> user.post_set.all() → QuerySet van alle posts geplaatst door de user
+>>> user.post_set.create(title’...’, content’...’) → maakt post (geen auteur vermelden)
+>>> exit() → verlaat de Python shell
+ 
+Je kan filteren op >>> user.id, >>> user.pk, >>> user = User.objects.get(id=1), etc.
