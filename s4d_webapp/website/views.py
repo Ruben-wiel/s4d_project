@@ -8,14 +8,14 @@ adposts = [
         'title': 'Ad Post 1',
         'content': 'Boodschappen',
         'reward': '10 koekjes',
-        'date_posted': 'May 12, 2020' 
+        'date_posted': 'May 12, 2020'
     },
     {
         'author': 'Ruben',
         'title': 'Melk',
         'content': 'Ik heb melk nodig',
         'reward': 'Rune scimi',
-        'date_posted': 'May 12, 2006' 
+        'date_posted': 'May 12, 2006'
     }
 ]
 
@@ -24,17 +24,21 @@ adposts = [
 def home(request):
     return render(request, 'website/home.html')
 
+
 def details(request):
     return render(request, 'website/details.html', {'title': 'Details'})
 
+
 def posts(request):
     context = {
-        'adposts': adposts 
+        'adposts': adposts
     }
     return render(request, 'website/posts.html', context)
 
+
 def account(request):
     return render(request, 'website/account.html')
+
 
 def about(request):
     return render(request, 'website/about.html')
