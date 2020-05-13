@@ -13,7 +13,7 @@ class Post(models.Model):
     # TIMEZONE IS UTC , MOET NAAR ONZE TIJDZONE (+2 uur)
     date_posted = models.DateTimeField(default=timezone.now)
     # Geeft data van wanneer de post voor het LAATST GEWIJZIGD is
-    last_modified = models.DateTimeField(default=timezone.now)
+    #last_modified = models.DateTimeField(default=timezone.now)
 
-    def __str__(self):
+    def __str__(self):  # Deze functie werkt als een methode per post.
         return self.title

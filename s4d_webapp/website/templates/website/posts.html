@@ -1,17 +1,15 @@
-{% extends "website/base.html" %}
-{% block content %}
-    {% for post in adposts %}
-    <article class="media content-section">
-        <div class="media-body">
-          <div class="article-metadata">
-            <a class="mr-2" href="#">{{ post.author }}</a>
-            <small class="text-muted">{{ post.date_posted }}</small>
-          </div>
-          <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
-          <p class="article-content">{{ post.content }}</p>
-          <!-- REWARD OPMAAK -->
-          <p class="article-reward"><b>Beloning:</b>{{ post.reward }}</p>
-        </div>
-      </article>
-    {% endfor %}
-{% endblock content %}
+{% extends "website/base.html" %} {% block content %} {% for post in adposts %}
+<article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+      <a class="mr-2" href="#">{{ post.author }}</a>
+      <small class="text-muted">{{ post.date_posted|date:"l F d, Y" }}</small>
+      <!-- Datum/tijd opmaak -->
+    </div>
+    <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+    <p class="article-content">{{ post.content }}</p>
+    <!-- REWARD OPMAAK -->
+    <p class="article-reward"><b>Beloning:</b>{{ post.reward }}</p>
+  </div>
+</article>
+{% endfor %} {% endblock content %}
