@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # Eigen apps
     'website.apps.WebsiteConfig',
+    'users.apps.UsersConfig',
     # Dit zijn standaard Django apps
     'django.contrib.admin',
     'django.contrib.auth',
