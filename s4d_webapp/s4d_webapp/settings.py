@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     # Eigen apps
     'website.apps.WebsiteConfig',
     'users.apps.UsersConfig',
+    'crispy_forms', #is voor het maken van een nette registratie page voor bootstrap.
     # Dit zijn standaard Django apps
     'django.contrib.admin',
     'django.contrib.auth',
@@ -107,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'nl-nl' #'en-us' veranderd naar nl-nl
 
 TIME_ZONE = 'CET'  # Amsterdam Timezone ingesteld
 
@@ -122,3 +123,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4' #hier vertellen we welke css framework we willen gebruiken voor de crispy template.
