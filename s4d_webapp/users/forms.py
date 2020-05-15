@@ -1,10 +1,11 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-
+#from phonenumber_field.modelfields import PhoneNumberField
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
+    phone = forms.CharField()
 
 # algemeen: This class meta gives us a nested namespace for configration and keeps the configurations at one place.
 # And within the configuration we’re saying that the model that will be affected is the User-model.
@@ -15,4 +16,4 @@ class UserRegisterForm(UserCreationForm):
         model = User
 
 #These are the fields that are going to be shown on our form.
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ['username', 'email','phone', 'password1', 'password2']
