@@ -127,3 +127,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4' #hier vertellen we welke css framework we willen gebruiken voor de crispy template.
+
+LOGIN_REDIRECT_URL = 'web-home'
+LOGIN_URL = 'login'

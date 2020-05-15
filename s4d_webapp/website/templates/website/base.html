@@ -20,6 +20,7 @@
 
 <body>
     <header class="site-header">
+        <!-- Hier staat de navbar -->
         <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
           <div class="container">
             <a class="navbar-brand mr-4" href="{% url 'web-home' %}">WEBSITENAAM</a>
@@ -34,9 +35,16 @@
               </div>
               <!-- Navbar Right Side -->
               <div class="navbar-nav">
-                <a class="nav-item nav-link" href="{% url 'web-account' %}">Login</a>
-                <a class="nav-item nav-link" href="/register">Register</a>
-                <a class="nav-item nav-link" href="/admin">Admin</a>
+                <!-- Zodra de gebruiker is ingelogd is deze if-statement van toepassing -->
+                {% if user.is_authenticated %}
+                  <a class="nav-item nav-link" href="{% url 'profile' %}">Profiel</a>
+                  <a class="nav-item nav-link" href="{% url 'logout' %}">Log uit</a>
+                {% else %}
+                  <a class="nav-item nav-link" href="{% url 'login' %}">Log in</a>
+                  <a class="nav-item nav-link" href="{% url 'register' %}">Registreer</a>
+                {% endif %}
+                <!-- Voor de development fase staat de admin link altijd in de navbar -->
+                  <a class="nav-item nav-link" href="/admin">Admin</a>
               </div>
             </div>
           </div>

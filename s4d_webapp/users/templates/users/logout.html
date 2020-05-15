@@ -1,0 +1,10 @@
+{% extends "website/base.html" %}
+{% block content %}
+    <h2>Je bent nu uitgelogd</h2>
+    <div class="border-top pt-3">
+        <!-- -->
+        <small class="text-muted">
+            <a href="{% url 'login' %}">Log opnieuw in</a>
+        </small>
+    </div>
+{% endblock content %}
