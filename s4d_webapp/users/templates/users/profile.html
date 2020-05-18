@@ -10,6 +10,18 @@
       <!-- Bio & andere assets op profiel weergeven. -->
     </div>
   </div>
-  <!-- FORM HERE -->
-</div>
+  <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <!-- fieldset maakt samenhangende border om content -->
+      <fieldset class="form-group">
+          <legend class="border-bottom mb-4">Profiel Informatie</legend>
+          <!-- import de form van uit de users/views.py -->
+          {{ u_form|crispy }}
+          {{ p_form|crispy }}
+
+      </fieldset>
+      <div class="form-group">
+          <button class="btn btn-outline-info" type="submit">Profiel Bijwerken</button>
+      </div>
+  </form></div>
 {% endblock content %}
