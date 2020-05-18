@@ -7,9 +7,9 @@ class Profile(models.Model):
     image = models.ImageField(default='default.png', upload_to='profile_pics')
     # default = true -> dan mag het ChafField leeg blijven. Indien False dan MOET er iets in staan.
 
-    # biography = models.CharField(default=True, max_length=250)
-    # location = models.CharField(default=True, max_length=50)
-    # phone = models.CharField(default=True, max_length=13)
+    biography = models.CharField(default=True, max_length=250)
+    location = models.CharField(default=True, max_length=50)
+    phone = models.CharField(default=True, max_length=13)
     # posts =
     # Hier moet nog meer belangrijke profiel informatie komen
 
