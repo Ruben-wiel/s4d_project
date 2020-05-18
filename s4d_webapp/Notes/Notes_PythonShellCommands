@@ -2,7 +2,7 @@ Bewerken van database met aanmaken posts
 (via python shell)
 Import post class
 >>> python manage.py shell →  opent de python shell
->>> from blog.models import Post →  import Post class
+>>> x →  import Post class
 >>> from Django.contrib.auth.models import User →  import User dat aangemaakt is via admin
  
 >>> user.objects.all() →  QuerySet te zien van alle gebruikers
