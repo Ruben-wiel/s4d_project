@@ -28,7 +28,7 @@ class PostListView(ListView):
 class PostDetailView(DetailView):
     model = Post
     
-    
+
 def account(request):
     return render(request, 'website/account.html')
 
