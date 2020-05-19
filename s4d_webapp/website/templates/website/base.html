@@ -37,6 +37,7 @@
               <div class="navbar-nav">
                 <!-- Zodra de gebruiker is ingelogd is deze if-statement van toepassing -->
                 {% if user.is_authenticated %}
+                  <a class="nav-item nav-link" href="{% url 'post-create' %}">Plaats Advertentie</a>
                   <a class="nav-item nav-link" href="{% url 'profile' %}">Profiel</a>
                   <a class="nav-item nav-link" href="{% url 'logout' %}">Log uit</a>
                 {% else %}

@@ -6,12 +6,19 @@
             <div class="article-metadata">
                 <a class="mr-2" href="#">{{ object.author }}</a>
                 <small class="text-muted">{{ object.date_posted|date:"l F d, Y" }}</small>
+
         <!-- Datum/tijd opmaak -->
             </div>
             <h2 class="article-title">{{ object.title }}</h2>
             <p class="article-content">{{ object.content }}</p>
         <!-- REWARD OPMAAK -->
             <p class="article-reward"><b>Beloning:</b>{{ object.reward }}</p>
+            {% if object.author == user %}
+                <div>
+                    <a class="btn btn-secondary btn-sm nt-1 mb-1" href="{% url 'post-update' object.id %}">Bijwerken</a>
+                    <a class="btn btn-danger btn-sm nt-1 mb-1" href="{% url 'post-delete' object.id %}">Verwijder</a>
+                </div>
+            {% endif %}
         </div>
     </article>
 {% endblock content %}
