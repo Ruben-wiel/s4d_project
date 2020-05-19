@@ -1,6 +1,6 @@
 from django.urls import path
 #nieuwe view voor de advertentiepagina: list view
-from .views import PostListView
+from .views import PostListView, PostDetailView
 from . import views
 
 urlpatterns = [
@@ -12,6 +12,9 @@ urlpatterns = [
 
     #Dit is de URL naar het overzicht van de posts.
     path('posts/', PostListView.as_view(), name='web-posts'),
+
+    #Dit is de URL naar het informatie-overzicht van individuele posts.
+    path('posts/post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),
 
     #Dit is de URL naar het account pagina.
     path('account/', views.account, name='web-account'),

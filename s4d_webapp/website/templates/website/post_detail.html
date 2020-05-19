@@ -1,0 +1,16 @@
+{% extends "website/base.html" %} {% block content %} 
+    <article class="media content-section">
+    <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
+    <div class="media-body">
+        <div class="article-metadata">
+        <a class="mr-2" href="#">{{ object.author }}</a>
+        <small class="text-muted">{{ object.date_posted|date:"l F d, Y" }}</small>
+        <!-- Datum/tijd opmaak -->
+        </div>
+        <h2 class="article-title">{{ object.title }}</h2>
+        <p class="article-content">{{ object.content }}</p>
+        <!-- REWARD OPMAAK -->
+        <p class="article-reward"><b>Beloning:</b>{{ object.reward }}</p>
+    </div>
+    </article>
+{% endblock content %}
