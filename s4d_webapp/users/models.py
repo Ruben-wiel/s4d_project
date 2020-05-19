@@ -18,8 +18,11 @@ class Profile(models.Model):
         return f'{self.user.username} Profile'
 
     #Resized images voor de profielfoto, zodat er geen onnodige grote fotos geladen hoeven worden.
-    def save(self):
-        super().save() #super runned de savemethod van de parent class
+    #Na tutorial 9 problemen met registreren, gefixt met *args & **kwargs toevoeging op lijn 24 en 25 m.b.v. volgende link:
+    #https://stackoverflow.com/questions/52351756/django-typeerror-save-got-an-unexpected-keyword-argument-force-insert
+
+    def save(self, *args, **kwargs):
+        super(Profile, self).save(*args, **kwargs) #super runned de savemethod van de parent class
 
         img = Image.open(self.image.path)
 
