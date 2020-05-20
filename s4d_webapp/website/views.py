@@ -34,7 +34,7 @@ class PostListView(ListView):
     # dit zorgt voor dat de nieuwste posts bovenaan komen te staan
     ordering = ['-date_posted']
     # paginate_by zorgt ervoor dat niet alle posts/advertenties op 1 pagina te zien zijn.
-    paginate_by = 10
+    paginate_by = 1
 
 
 class PostDetailView(DetailView):
