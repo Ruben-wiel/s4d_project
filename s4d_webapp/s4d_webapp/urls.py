@@ -26,6 +26,26 @@ urlpatterns = [
     path('profile/', user_views.profile, name='profile'),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
+    #URL path naar het wachtwoord wijzigen
+    path('password-reset/', 
+          auth_views.PasswordResetView.as_view(template_name='users/password_reset.html'), 
+          name='password_reset'),
+    #URL path naar het succesvol gewijzigd hebben van een wachtwoord: email succesvol verzonden
+    path('password-reset/done/', 
+          auth_views.PasswordResetDoneView.as_view(template_name='users/password_reset_done.html'), 
+          name='password_reset_done'),
+    #URL path naar het confirmen van het wachtwoord wijzigen.
+    #De URL heeft 2 parameters nodig: uidb64 en token.
+    #uid: The user’s primary key encoded in base 64.
+    #token: Token to check that the reset link is valid.
+    path('password-reset-confirm/<uidb64>/<token>/', 
+          auth_views.PasswordResetConfirmView.as_view(template_name='users/password_reset_confirm.html'), 
+          name='password_reset_confirm'),
+    #URL path nadat het wachtwoord wijzigen voltooid is
+    path('password-reset-complete/', 
+          auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html'), 
+          name='password_reset_complete'),
+
     path('', include('website.urls')),
 ]
 

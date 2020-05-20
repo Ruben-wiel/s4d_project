@@ -6,7 +6,7 @@
             {% csrf_token %}
             <!-- fieldset maakt samenhangende border om content -->
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4"> Doe mee!</legend>
+                <legend class="border-bottom mb-4">Doe mee!</legend>
                 <!-- import de form van uit de users/views.py -->
                 {{ form|crispy }}
             </fieldset>
@@ -17,7 +17,7 @@
         <div class="border-top pt-3">
             <!-- -->
             <small class="text-muted">
-                Heb je al een account? <a class="ml-2" href="{% url 'login' %}"> Log in</a>
+                Heb je al een account? <a class="ml-2" href="{% url 'login' %}">Log in</a>
             </small>
         </div>
     </div>
