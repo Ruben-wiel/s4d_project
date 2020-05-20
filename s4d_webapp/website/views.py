@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.models import User
 from django.views.generic import (
     ListView,
     DetailView,
@@ -34,7 +35,21 @@ class PostListView(ListView):
     # dit zorgt voor dat de nieuwste posts bovenaan komen te staan
     ordering = ['-date_posted']
     # paginate_by zorgt ervoor dat niet alle posts/advertenties op 1 pagina te zien zijn.
-    paginate_by = 1
+    paginate_by = 5
+
+
+#Laat alle posts zien van een gebruiker op zijn profiel
+class UserPostListView(ListView):
+    model = Post
+    template_name = 'website/user_posts.html'  # <app>/<model>_<viewtype>.html
+    context_object_name = 'adposts'
+    # paginate_by zorgt ervoor dat niet alle posts/advertenties op 1 pagina te zien zijn.
+    paginate_by = 5
+
+    #Laat een 404 pagina zien i.p.v. een lege pagina als functie niet mogelijk is. 
+    def get_queryset(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return Post.objects.filter(author=user).order_by('-date_posted')
 
 
 class PostDetailView(DetailView):

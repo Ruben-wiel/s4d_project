@@ -5,7 +5,8 @@ from .views import (
     PostDetailView,
     PostCreateView,
     PostUpdateView,
-    PostDeleteView
+    PostDeleteView,
+    UserPostListView
 )
 from . import views
 
@@ -18,6 +19,9 @@ urlpatterns = [
 
     # Dit is de URL naar het overzicht van de posts.
     path('posts/', PostListView.as_view(), name='web-posts'),
+
+    # Dit is de URL naar het overzicht van de posts per gebruiker.
+    path('posts/user/<str:username>', UserPostListView.as_view(), name='user-posts'),
 
     # Dit is de URL naar het informatie-overzicht van individuele posts.
     path('posts/post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),

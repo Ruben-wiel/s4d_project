@@ -1,0 +1,13 @@
+Script started on Wed May 20 11:53:41 2020
+[1m[7m%[27m[1m[0m                                                                                ]7;file://MacBook-Pro-van-Ruben.local/Users/rubenvandewiel/desktop/Project%20Python/Project/s4d_project/s4d_project/s4d[0m[27m[24m[Jrubenvandewiel@MacBook-Pro-van-Ruben s4d % [K[?2004hccd scripts[?2004l
+[1m[7m%[27m[1m[0m                                                                                ]7;file://MacBook-Pro-van-Ruben.local/Users/rubenvandewiel/desktop/Project%20Python/Project/s4d_project/s4d_project/s4d/scripts[0m[27m[24m[Jrubenvandewiel@MacBook-Pro-van-Ruben scripts % [K[?2004hlls[?2004l
+Activate.ps1		django-admin.py		pip3.exe
+activate		easy_install-3.7.exe	python.exe
+activate.bat		easy_install.exe	pythonw.exe
+deactivate.bat		pip.exe			sqlformat.exe
+django-admin.exe	pip3.7.exe
+[1m[7m%[27m[1m[0m                                                                                ]7;file://MacBook-Pro-van-Ruben.local/Users/rubenvandewiel/desktop/Project%20Python/Project/s4d_project/s4d_project/s4d/scripts[0m[27m[24m[Jrubenvandewiel@MacBook-Pro-van-Ruben scripts % [K[?2004haactivate[?2004l
+zsh: command not found: activate
+[1m[7m%[27m[1m[0m                                                                                ]7;file://MacBook-Pro-van-Ruben.local/Users/rubenvandewiel/desktop/Project%20Python/Project/s4d_project/s4d_project/s4d/scripts[0m[27m[24m[Jrubenvandewiel@MacBook-Pro-van-Ruben scripts % [K[?2004hAActivate[?2004l
+zsh: command not found: Activate
+[1m[7m%[27m[1m[0m                                                                                ]7;file://MacBook-Pro-van-Ruben.local/Users/rubenvandewiel/desktop/Project%20Python/Project/s4d_project/s4d_project/s4d/scripts[0m[27m[24m[Jrubenvandewiel@MacBook-Pro-van-Ruben scripts % [K[?2004h

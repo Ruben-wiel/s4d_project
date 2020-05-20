@@ -1,9 +1,11 @@
-{% extends "website/base.html" %} {% block content %} {% for post in adposts %}
+{% extends "website/base.html" %} 
+{% block content %} 
+{% for post in adposts %}
 <article class="media content-section">
   <img class="rounded-circle article-img" src="{{post.author.profile.image.url }}">
   <div class="media-body">
     <div class="article-metadata">
-      <a class="mr-2" href="#">{{ post.author }}</a>
+      <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
       <small class="text-muted">{{ post.date_posted|date:"l F d, Y" }}</small>
       <!-- Datum/tijd opmaak -->
     </div>
@@ -14,7 +16,8 @@
   </div>
 </article>
 {% endfor %}
-
+<!-- Onderstaande 'pagination' functie zorgt ervoor dat niet alle posts op 1 pagina verschijnen, 
+  maar per 'x' aantal. Ingesteld in de Views. -->
 {% if is_paginated %}
 
   {% if page_obj.has_previous %}
@@ -36,5 +39,4 @@
   {% endif %}
 
 {% endif %}
-
 {% endblock content %}
