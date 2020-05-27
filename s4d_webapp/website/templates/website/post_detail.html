@@ -9,10 +9,10 @@
 
         <!-- Datum/tijd opmaak -->
             </div>
-            <h2 class="article-title">{{ object.title }}</h2>
-            <p class="article-content">{{ object.content }}</p>
+            <h2 class="article-title">{{ object.titel }}</h2>
+            <p class="article-content">{{ object.beschrijving }}</p>
         <!-- REWARD OPMAAK -->
-            <p class="article-reward"><b>Beloning:</b>{{ object.reward }}</p>
+            <p class="article-reward"><b>Beloning:</b>{{ object.beloning }}</p>
             {% if object.author == user %}
                 <div>
                     <a class="btn btn-secondary btn-sm nt-1 mb-1" href="{% url 'post-update' object.id %}">Bijwerken</a>

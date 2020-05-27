@@ -37,6 +37,10 @@ urlpatterns = [
     path('posts/post/<int:pk>/delete/',
          PostDeleteView.as_view(), name='post-delete'),
 
+    # Dit is de URL naar het favouriten pagina.
+    #path('posts/post/<int:fav_id>/favourite_post/',
+    #    views.favourite_post, name='favourite_post'),
+
     # Dit is de URL naar het account pagina.
     path('account/', views.account, name='web-account'),
 

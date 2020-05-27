@@ -23,7 +23,7 @@ def details(request):
 
 def posts(request):
     context = {
-        'adposts': Post.objects.all()
+        'adposts': Post.objects.all(),
     }
     return render(request, 'website/posts.html', context)
 
@@ -31,7 +31,7 @@ def posts(request):
 class PostListView(ListView):
     model = Post
     template_name = 'website/posts.html'  # <app>/<model>_<viewtype>.html
-    context_object_name = 'adposts'
+    context_object_name = 'adposts' 
     # dit zorgt voor dat de nieuwste posts bovenaan komen te staan
     ordering = ['-date_posted']
     # paginate_by zorgt ervoor dat niet alle posts/advertenties op 1 pagina te zien zijn.
@@ -54,11 +54,11 @@ class UserPostListView(ListView):
 
 class PostDetailView(DetailView):
     model = Post
-
+    
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['title', 'content', 'reward']
+    fields = ['titel', 'beschrijving', 'beloning']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -67,7 +67,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ['title', 'content', 'reward']
+    fields = ['titel', 'beschrijving', 'beloning']
 
     # de auteur wordt gelijk gezet aan de gene die dan ingelogd is, voordat de .form_valid method start.
     def form_valid(self, form):
