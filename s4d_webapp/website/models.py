@@ -3,19 +3,31 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
 
+class Category(models.Model):
+    name = models.CharField(max_length=20)
+    
+    def __str__(self):
+        return self.name
 
 class Post(models.Model):
     titel = models.CharField(max_length=100)
     # Geeft aan dat de post van de gebruiker moet worden verwijdert indien de gebruiker verwijdert wordt
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+<<<<<<< HEAD
     beschrijving = models.TextField(max_length=500)
     beloning = models.TextField(max_length=500)
     #phone = models.TextField(max_length=100)
+=======
+    content = models.TextField(max_length=500)
+    reward = models.TextField(max_length=500)
+    categories = models.ManyToManyField(Category)
+>>>>>>> master
     # Geeft data van wanneer de post GEPOST wordt
     # TIMEZONE IS UTC , MOET NAAR ONZE TIJDZONE (+2 uur)
     date_posted = models.DateTimeField(default=timezone.now)
     # Geeft data van wanneer de post voor het LAATST GEWIJZIGD is
     #last_modified = models.DateTimeField(default=timezone.now)
+    views = models.IntegerField(default=0)
 
     #FAVORITEN TOEVOEGEN AAN JE ACCOUNT (JENTE)
     favourite = models.ManyToManyField(User, related_name='favourite', blank=True)

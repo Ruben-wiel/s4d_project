@@ -27,6 +27,10 @@ def posts(request):
     }
     return render(request, 'website/posts.html', context)
 
+#bootstrap filter view
+def bootstrap_filter_view(request):
+    return render(request, 'website/bootstrap_form.html', {})
+
 
 class PostListView(ListView):
     model = Post

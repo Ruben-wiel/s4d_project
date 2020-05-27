@@ -6,13 +6,13 @@ from .views import (
     PostCreateView,
     PostUpdateView,
     PostDeleteView,
-    UserPostListView
+    UserPostListView,
 )
 from . import views
 
 urlpatterns = [
     # Dit is de URL naar de home pagina.
-    path('', views.home, name='web-home'),
+    path('', views.bootstrap_filter_view, name='web-home'),
 
     # Dit is de URL naar de detail pagina over de post.
     path('details/', views.details, name='web-details'),
