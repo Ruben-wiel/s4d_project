@@ -13,15 +13,9 @@ class Post(models.Model):
     titel = models.CharField(max_length=100)
     # Geeft aan dat de post van de gebruiker moet worden verwijdert indien de gebruiker verwijdert wordt
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-<<<<<<< HEAD
     beschrijving = models.TextField(max_length=500)
     beloning = models.TextField(max_length=500)
     #phone = models.TextField(max_length=100)
-=======
-    content = models.TextField(max_length=500)
-    reward = models.TextField(max_length=500)
-    categories = models.ManyToManyField(Category)
->>>>>>> master
     # Geeft data van wanneer de post GEPOST wordt
     # TIMEZONE IS UTC , MOET NAAR ONZE TIJDZONE (+2 uur)
     date_posted = models.DateTimeField(default=timezone.now)
@@ -33,7 +27,7 @@ class Post(models.Model):
     favourite = models.ManyToManyField(User, related_name='favourite', blank=True)
 
     def __str__(self):  # Deze functie werkt als een methode per post.
-        return self.title
+        return self.titel
 
     def get_absolute_url(self):
         # deze reverse laat de gebruiker na het aanmaken van de post naar de detail pagina gaan.
