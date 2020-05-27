@@ -3,6 +3,11 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
 
+class Category(models.Model):
+    name = models.CharField(max_length=20)
+    
+    def __str__(self):
+        return self.name
 
 class Post(models.Model):
     title = models.CharField(max_length=100)
@@ -10,12 +15,13 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField(max_length=500)
     reward = models.TextField(max_length=500)
-    #phone = models.TextField(max_length=100)
+    categories = models.ManyToManyField(Category)
     # Geeft data van wanneer de post GEPOST wordt
     # TIMEZONE IS UTC , MOET NAAR ONZE TIJDZONE (+2 uur)
     date_posted = models.DateTimeField(default=timezone.now)
     # Geeft data van wanneer de post voor het LAATST GEWIJZIGD is
     #last_modified = models.DateTimeField(default=timezone.now)
+    views = models.IntegerField(default=0)
 
     def __str__(self):  # Deze functie werkt als een methode per post.
         return self.title

@@ -6,6 +6,7 @@ from .models import Profile
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
     phone = forms.CharField()
+    biography = forms.CharField()
 
 # algemeen: This class meta gives us a nested namespace for configration and keeps the configurations at one place.
 # And within the configuration we’re saying that the model that will be affected is the User-model.
