@@ -19,6 +19,7 @@ urlpatterns = [
 
     # Dit is de URL naar het overzicht van de posts.
     path('posts/', PostListView.as_view(), name='web-posts'),
+    #path('posts/', views.bootstrap_filter_view, name='web-posts'),
 
     # Dit is de URL naar het overzicht van de posts per gebruiker.
     path('posts/user/<str:username>', UserPostListView.as_view(), name='user-posts'),

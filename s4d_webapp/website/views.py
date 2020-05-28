@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
@@ -8,7 +9,7 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
-from .models import Post
+from .models import Post, Category
 
 
 def home(request):
@@ -27,9 +28,40 @@ def posts(request):
     }
     return render(request, 'website/posts.html', context)
 
+#filter view logic handler
+def is_valid_queryparam(param):
+    return param != '' and param is not None
+
 #bootstrap filter view
 def bootstrap_filter_view(request):
-    return render(request, 'website/bootstrap_form.html', {})
+    qs = Post.objects.all()
+    categories = Category.objects.all()
+    title_or_description_query = request.GET.get('title_or_description')
+    publish_date = request.GET.get('publish_date')
+    view_count = request.GET.get('view_count')
+    category = request.GET.get('category')
+    #print(title_or_author_query)
+
+    if is_valid_queryparam(title_or_description_query):
+        qs = qs.filter(Q(title__icontains=title_or_description_query) 
+                        | Q(beschrijving__icontains=title_or_description_query )
+                        ).distinct()
+
+    if is_valid_queryparam(category) and category != 'Maak keuze...':
+        qs = qs.filter(category__icontains=category)
+
+    if publish_date == 'Nieuwste eerst':
+        ['-date_posted']
+        print("nieuwste werkt")
+    elif publish_date == 'Oudste eerst':
+        ['date_posted']
+        print("oudste werkt ook")
+
+    context = {
+        'queryset': qs,
+        'categories': categories
+    }
+    return render(request, 'website/bootstrap_form.html', context)
 
 
 class PostListView(ListView):
@@ -62,7 +94,7 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['titel', 'beschrijving', 'beloning']
+    fields = ['title', 'category', 'beschrijving', 'beloning']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -71,7 +103,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ['titel', 'beschrijving', 'beloning']
+    fields = ['title', 'category', 'beschrijving', 'beloning']
 
     # de auteur wordt gelijk gezet aan de gene die dan ingelogd is, voordat de .form_valid method start.
     def form_valid(self, form):
