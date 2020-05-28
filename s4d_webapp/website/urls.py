@@ -7,6 +7,8 @@ from .views import (
     PostUpdateView,
     PostDeleteView,
     UserPostListView,
+    #make favourite class
+    #PostFavouriteRedirect,
 )
 from . import views
 
@@ -38,15 +40,14 @@ urlpatterns = [
     path('posts/post/<int:pk>/delete/',
          PostDeleteView.as_view(), name='post-delete'),
 
-    # Dit is de URL naar het favouriten pagina.
-    #path('posts/post/<int:fav_id>/favourite_post/',
-    #    views.favourite_post, name='favourite_post'),
-
     # Dit is de URL naar het account pagina.
     path('account/', views.account, name='web-account'),
 
     # Dit is de URL naar de over-ons pagina.
     path('about/', views.about, name='web-about'),
+
+    # Dit is de URL nadat er op favourite is geklikt.
+    path('posts/', views.favourite, name='web-posts'),
 ]
 
 # browser zoekt als volgt de url:

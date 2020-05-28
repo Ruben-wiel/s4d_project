@@ -7,7 +7,8 @@ from django.views.generic import (
     DetailView,
     CreateView,
     UpdateView,
-    DeleteView
+    DeleteView,
+    RedirectView
 )
 from .models import Post, Category
 
@@ -50,12 +51,12 @@ def bootstrap_filter_view(request):
     if is_valid_queryparam(category) and category != 'Maak keuze...':
         qs = qs.filter(category__icontains=category)
 
-    if publish_date == 'Nieuwste eerst':
-        ['-date_posted']
-        print("nieuwste werkt")
-    elif publish_date == 'Oudste eerst':
-        ['date_posted']
-        print("oudste werkt ook")
+    # if publish_date == 'Nieuwste eerst':
+    #     ['-date_posted']
+    #     print("nieuwste werkt")
+    # elif publish_date == 'Oudste eerst':
+    #     ['date_posted']
+    #     print("oudste werkt ook")
 
     context = {
         'queryset': qs,
@@ -135,3 +136,7 @@ def account(request):
 
 def about(request):
     return render(request, 'website/about.html')
+
+def favourite(request):
+    is_favourite = False
+    return render(request, 'website/posts.html')

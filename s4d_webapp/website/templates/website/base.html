@@ -17,7 +17,7 @@
 
 
     {% if title %}
-        <title>WEBSITENAAM - {{ titel }}</title>
+        <title>WEBSITENAAM - {{ title }}</title>
     {% else %}
         <title>WEBSITENAAM</title>
     {% endif %} 
@@ -26,7 +26,7 @@
 <body>
     <header class="site-header">
         <!-- Hier staat de navbar -->
-        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
           <div class="container">
             <a class="navbar-brand mr-4" href="{% url 'web-home' %}">WEBSITENAAM</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,7 +61,7 @@
           <div class="col-md-8">
             {% if messages %}
               {% for message in messages %}
-                <!-- "alert alert-{{ message.tags}}" is een bootstrap shortcut voor een groene bar-->
+                "alert alert-{{ message.tags}}" is een bootstrap shortcut voor een groene bar
                 <div class="alert alert-{{ message.tags}}">
                     {{ message }}
                 </div>
@@ -81,9 +81,9 @@
                 </ul>
               </p>
             </div>
-          </div>
+          </div>  
         </div>
-      </main>
+      </main> 
     
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

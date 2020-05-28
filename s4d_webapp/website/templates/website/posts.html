@@ -37,8 +37,11 @@
   </div>
   <button type="submit" class="btn btn-primary">Zoek Advertenties</button>
 </form>
+<script type="text/javascript">
+  var is_favourite = True
+</script>
 {% for post in adposts %}
-<article class="media content-section">
+  <article class="media content-section">
   <img class="rounded-circle article-img" src="{{post.author.profile.image.url }}">
   <div class="media-body">
     <div class="article-metadata">
@@ -54,12 +57,20 @@
   </div>
   <!-- FAVOURITEN KNOP VOOR DE POST -->
   <div id="favourite-section">
-    <a href="#">
-      <i class="far fa-star"></i>
-    </a>
+    {% if is_favourite == True %}
+      <a href="{% url 'web-posts' %}">
+        <i class="fas fa-star"></i>
+      </a>
+    {% else %}
+      <a href="{% url 'web-posts' %}">
+        <i class="far fa-star"></i>
+      </a>
+    {% endif %}
   </div>
-</article>
+  </article> 
 {% endfor %}
+
+
 <!-- Onderstaande 'pagination' functie zorgt ervoor dat niet alle posts op 1 pagina verschijnen, 
   maar per 'x' aantal. Ingesteld in de Views. -->
 {% if is_paginated %}
@@ -84,3 +95,4 @@
 
 {% endif %}
 {% endblock content %}
+
