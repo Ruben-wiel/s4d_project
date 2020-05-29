@@ -21,7 +21,6 @@ urlpatterns = [
 
     # Dit is de URL naar het overzicht van de posts.
     path('posts/', PostListView.as_view(), name='web-posts'),
-    #path('posts/', views.bootstrap_filter_view, name='web-posts'),
 
     path('test/', views.bootstrap_filter_view, name='web-test'),
 
