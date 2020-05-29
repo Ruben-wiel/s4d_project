@@ -1,72 +1,70 @@
 {% extends "website/base.html" %}
 {% block content %}
-<h3>Filter content</h3>
-<form method="GET" action=".">
-    <div class="form-row">
-        <div class="form-group col-12">
-            <div class="input-group">
-                <input class="form-control py-2 border-right-0 border" type="search" name="title_or_description" placeholder="Titel of beschrijving..."/>
-                <span class="input-group-append">
-                    <div class="input-group-text bg-transparent">
-                        <i class="fa fa-search"></i>
-                    </div>
-                </span>
+    <h3>Filter content</h3>
+    <form method="GET" action=".">
+        <div class="form-row">
+            <div class="form-group col-12">
+                <div class="input-group">
+                    <input class="form-control py-2 border-right-0 border" type="search" name="title_or_description" placeholder="Titel of beschrijving..."/>
+                    <span class="input-group-append">
+                        <div class="input-group-text bg-transparent">
+                            <i class="fa fa-search"></i>
+                        </div>
+                    </span>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-4">
-        <label for="publishDateMin">Publish date Minimum</label>
-        <input type="date" class="form-control" id="publishDateMin" name="date_min">
-      </div>
-      <div class="form-group col-md-4">
-        <label for="publishDateMax">Publish date Maximum</label>
-        <input type="date" class="form-control" id="publishDateMax" name="date_max">
-      </div>
-      <div class="form-group col-md-4 col-lg-4">
-        <label for="category">Soort Advertentie</label>
-        <select id="category" class="form-control" name="category">
-          <option selected>Maak keuze...</option>
-          <option>Klusjes</option>
-          <option>Uitlaten</option>
-          <option>Boodschappen</option>
-          <option>Overig</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-group">
-    </div>
-    <button type="submit" class="btn btn-primary">Zoek Advertenties</button>
-  </form>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="publishDateMin">Publish date Minimum</label>
+            <input type="date" class="form-control" id="publishDateMin" name="date_min">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="publishDateMax">Publish date Maximum</label>
+            <input type="date" class="form-control" id="publishDateMax" name="date_max">
+          </div>
+          <div class="form-group col-md-4 col-lg-4">
+            <label for="category">Soort Advertentie</label>
+            <select id="category" class="form-control" name="category">
+              <option selected>Maak keuze...</option>
+              <option>Klusjes</option>
+              <option>Uitlaten</option>
+              <option>Boodschappen</option>
+              <option>Overig</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+        </div>
+        <button type="submit" class="btn btn-primary">Zoek Advertenties</button>
+    </form>
 
-  
-
-  {% for post in queryset %}
-<article class="media content-section">
-  <img class="rounded-circle article-img" src="{{post.author.profile.image.url }}">
-  <div class="media-body">
-    <div class="article-metadata">
-      <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
-      <small class="text-muted">{{ post.date_posted|date:"l F d, Y" }}</small>
-      <!-- Datum/tijd opmaak -->
-    </div>
-    <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
-    <h4 class="article-title">Categorie: {{ post.category }}</h4>
-    <p class="article-content">{{ post.beschrijving }}</p>
-    <!-- REWARD OPMAAK -->
-    <p class="article-reward"><b>Beloning:</b>{{ post.beloning }}</p>
-  </div>
-  <!-- FAVOURITEN KNOP VOOR DE POST -->
-  <div id="favourite-section">
-    <a href="#">
-      <i class="far fa-star"></i>
-    </a>
-  </div>
-</article>
+{% for post in queryset %}
+    <article class="media content-section">
+      <img class="rounded-circle article-img" src="{{post.author.profile.image.url }}">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
+          <small class="text-muted">{{ post.date_posted|date:"l F d, Y" }}</small>
+          <!-- Datum/tijd opmaak -->
+        </div>
+        <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+        <h4 class="article-title">Categorie: {{ post.category }}</h4>
+        <p class="article-content">{{ post.beschrijving }}</p>
+        <!-- REWARD OPMAAK -->
+        <p class="article-reward"><b>Beloning:</b>{{ post.beloning }}</p>
+      </div>
+      <!-- FAVOURITEN KNOP VOOR DE POST -->
+      <div id="favourite-section">
+        <a href="#">
+          <i class="far fa-star"></i>
+        </a>
+      </div>
+    </article>
 {% endfor %}
 <!-- Onderstaande 'pagination' functie zorgt ervoor dat niet alle posts op 1 pagina verschijnen, 
   maar per 'x' aantal. Ingesteld in de Views. -->
-  {% if is_paginated %}
+{% if is_paginated %}
 
   {% if page_obj.has_previous %}
     <a class="btn btn-outline-info mb-4" href="?page=1">Begin</a>
