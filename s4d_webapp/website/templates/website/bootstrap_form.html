@@ -15,15 +15,15 @@
         </div>
     </div>
     <div class="form-row">
-      <div class="form-group col-md-6 col-lg-6">
-        <label for="publish_date">Gepubliceerd op</label>
-        <select id="publish_date" class="form-control" name="publish_date">
-          <option selected>Maak keuze...</option>
-          <option>Nieuwste eerst</option>
-          <option>Oudste eerst</option>
-        </select>
+      <div class="form-group col-md-4">
+        <label for="publishDateMin">Publish date Minimum</label>
+        <input type="date" class="form-control" id="publishDateMin" name="date_min">
       </div>
-      <div class="form-group col-md-6 col-lg-6">
+      <div class="form-group col-md-4">
+        <label for="publishDateMax">Publish date Maximum</label>
+        <input type="date" class="form-control" id="publishDateMax" name="date_max">
+      </div>
+      <div class="form-group col-md-4 col-lg-4">
         <label for="category">Soort Advertentie</label>
         <select id="category" class="form-control" name="category">
           <option selected>Maak keuze...</option>
@@ -38,6 +38,8 @@
     </div>
     <button type="submit" class="btn btn-primary">Zoek Advertenties</button>
   </form>
+
+  
 
   {% for post in queryset %}
 <article class="media content-section">
@@ -86,3 +88,4 @@
 
 {% endif %}
 {% endblock content %}
+

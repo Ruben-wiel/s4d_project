@@ -39,7 +39,8 @@ def bootstrap_filter_view(request):
     qs = Post.objects.all()
     categories = Category.objects.all()
     title_or_description_query = request.GET.get('title_or_description')
-    publish_date = request.GET.get('publish_date')
+    date_min = request.GET.get('date_min') 
+    date_max = request.GET.get('date_max')
     category = request.GET.get('category')
 
     if is_valid_queryparam(title_or_description_query):
@@ -50,13 +51,12 @@ def bootstrap_filter_view(request):
     if is_valid_queryparam(category) and category != 'Maak keuze...':
         qs = qs.filter(category__icontains=category)
 
-    # if publish_date == 'Nieuwste eerst':
-    #     ['-date_posted']
-    #     print("nieuwste werkt")
-    # elif publish_date == 'Oudste eerst':
-    #     ['date_posted']
-    #     print("oudste werkt ook")
+    if is_valid_queryparam(date_min):
+        qs = qs.filter(date_posted__gte=date_min)
 
+    if is_valid_queryparam(date_max):
+        qs = qs.filter(date_posted__lte=date_max )
+        
     context = {
         'queryset': qs,
         'categories': categories
