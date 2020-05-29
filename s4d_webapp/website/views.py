@@ -55,7 +55,7 @@ def bootstrap_filter_view(request):
         qs = qs.filter(date_posted__gte=date_min)
 
     if is_valid_queryparam(date_max):
-        qs = qs.filter(date_posted__lte=date_max )
+        qs = qs.filter(date_posted__lt=date_max )
         
     context = {
         'queryset': qs,
