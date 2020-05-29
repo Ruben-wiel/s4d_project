@@ -34,36 +34,6 @@ def posts(request):
 def is_valid_queryparam(param):
     return param != '' and param is not None
 
-#bootstrap filter view
-def bootstrap_filter_view(request):
-    qs = Post.objects.all()
-    categories = Category.objects.all()
-    title_or_description_query = request.GET.get('title_or_description')
-    date_min = request.GET.get('date_min') 
-    date_max = request.GET.get('date_max')
-    category = request.GET.get('category')
-
-    if is_valid_queryparam(title_or_description_query):
-        qs = qs.filter(Q(title__icontains=title_or_description_query) 
-                        | Q(beschrijving__icontains=title_or_description_query )
-                        ).distinct()
-
-    if is_valid_queryparam(category) and category != 'Maak keuze...':
-        qs = qs.filter(category__icontains=category)
-
-    if is_valid_queryparam(date_min):
-        qs = qs.filter(date_posted__gte=date_min)
-
-    if is_valid_queryparam(date_max):
-        qs = qs.filter(date_posted__lt=date_max )
-        
-    context = {
-        'queryset': qs,
-        'categories': categories
-    }
-    return render(request, 'website/bootstrap_form.html', context)
-
-
 class PostListView(ListView):
     model = Post
     template_name = 'website/posts.html'  # <app>/<model>_<viewtype>.html
@@ -72,7 +42,31 @@ class PostListView(ListView):
     ordering = ['-date_posted']
     # paginate_by zorgt ervoor dat niet alle posts/advertenties op 1 pagina te zien zijn.
     paginate_by = 5
-
+    def get(self, request):
+        qs = Post.objects.all()
+        categories = Category.objects.all()
+        title_or_description_query = request.GET.get('title_or_description')
+        date_min = request.GET.get('date_min') 
+        date_max = request.GET.get('date_max')
+        category = request.GET.get('category')
+        paginate_by = 5
+        ordering = ['-date_posted']
+        if is_valid_queryparam(title_or_description_query):
+            qs = qs.filter(Q(title__icontains=title_or_description_query) 
+                            | Q(beschrijving__icontains=title_or_description_query )
+                            ).distinct()
+        if is_valid_queryparam(category) and category != 'Maak keuze...':
+            qs = qs.filter(category__icontains=category)
+        if is_valid_queryparam(date_min):
+            qs = qs.filter(date_posted__gte=date_min)
+        if is_valid_queryparam(date_max):
+            qs = qs.filter(date_posted__lt=date_max )  
+        context = {
+            'queryset': qs,
+            'categories': categories
+        }
+        Post.objects.order_by('-date_posted')
+        return render(request, 'website/posts.html', context)
 
 #Laat alle posts zien van een gebruiker op zijn profiel
 class UserPostListView(ListView):
