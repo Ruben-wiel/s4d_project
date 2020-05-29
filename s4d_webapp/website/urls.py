@@ -14,7 +14,7 @@ from . import views
 
 urlpatterns = [
     # Dit is de URL naar de home pagina.
-    path('', views.bootstrap_filter_view, name='web-home'),
+    path('', views.home, name='web-home'),
 
     # Dit is de URL naar de detail pagina over de post.
     path('details/', views.details, name='web-details'),
@@ -22,6 +22,8 @@ urlpatterns = [
     # Dit is de URL naar het overzicht van de posts.
     path('posts/', PostListView.as_view(), name='web-posts'),
     #path('posts/', views.bootstrap_filter_view, name='web-posts'),
+
+    path('test/', views.bootstrap_filter_view, name='web-test'),
 
     # Dit is de URL naar het overzicht van de posts per gebruiker.
     path('posts/user/<str:username>', UserPostListView.as_view(), name='user-posts'),

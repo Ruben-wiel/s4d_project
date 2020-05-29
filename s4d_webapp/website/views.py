@@ -24,6 +24,7 @@ def details(request):
 
 
 def posts(request):
+    bootstrap_filter_view()
     context = {
         'adposts': Post.objects.all(),
     }
@@ -39,9 +40,7 @@ def bootstrap_filter_view(request):
     categories = Category.objects.all()
     title_or_description_query = request.GET.get('title_or_description')
     publish_date = request.GET.get('publish_date')
-    view_count = request.GET.get('view_count')
     category = request.GET.get('category')
-    #print(title_or_author_query)
 
     if is_valid_queryparam(title_or_description_query):
         qs = qs.filter(Q(title__icontains=title_or_description_query) 
