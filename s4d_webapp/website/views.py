@@ -40,7 +40,7 @@ class PostListView(ListView):
     context_object_name = 'adposts' 
     # dit zorgt voor dat de nieuwste posts bovenaan komen te staan
     ordering = ['-date_posted']
-    # paginate_by zorgt ervoor dat niet alle posts/advertenties op 1 pagina te zien zijn. Edit
+    # paginate_by zorgt ervoor dat niet alle posts/advertenties op 1 pagina te zien zijn.
     paginate_by = 5
     def get(self, request):
         qs = Post.objects.all()
