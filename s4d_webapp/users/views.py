@@ -1,22 +1,33 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, UserProfileForm
 
 
 def register(request):
     #checkt of de usercreation al is ingevuld, als dat zo is ga je naar de homepage, zo niet returnt pagina terug
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
+        profile_form = UserProfileForm(request.POST)
+        if form.is_valid() and profile_form.is_valid():
+            user = form.save()
+
+            profile = profile_form.save(commit=False)
+            profile.user = user
+
+            profile.save()
+
+
             username = form.cleaned_data.get('username')
             #f'x' is een Fstring
             messages.success(request, f'Je account is aangemaakt, {username}! Je kan nu inloggen.')
             return redirect('login')
     else:
-        form =  UserRegisterForm()
-    return render(request, 'users/register.html', {'form': form})
+        form = UserRegisterForm()
+        profile_form = UserProfileForm()
+
+        context = {'form': form, 'profile_form': profile_form}
+    return render(request, 'users/register.html', context)
 
 #forms u_form en p_form zijn toegevoegd aan de profile view
 @login_required

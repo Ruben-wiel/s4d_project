@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import Profile
+from .models import Profile, UserProfile
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
@@ -22,6 +22,15 @@ class UserRegisterForm(UserCreationForm):
 #"a model form allows us to create a form that will work with a specific database model
 #in this case we want a form that will update our user model."
 #hiermee kan de profile geupdate worden.
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ('location', 'age')
+
+
+
+
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
 

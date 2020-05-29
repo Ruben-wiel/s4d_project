@@ -29,3 +29,13 @@ class Profile(models.Model):
             output_size = (300,300)
             img.thumbnail(output_size)
             img.save(self.image.path)
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    location = models.CharField(max_length=30)
+    age = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.user.username
+
