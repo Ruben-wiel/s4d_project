@@ -1,15 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
+from phonenumber_field.modelfields import PhoneNumberField
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default.png', upload_to='profile_pics')
     # default = true -> dan mag het ChafField leeg blijven. Indien False dan MOET er iets in staan.
-
-    biography = models.CharField(max_length=200)
-    location = models.CharField(max_length=200)
-    phone = models.CharField(max_length=200)
 
     # Hier moet nog meer belangrijke profiel informatie komen
 
@@ -33,9 +30,8 @@ class Profile(models.Model):
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    location = models.CharField(max_length=30)
-    age = models.CharField(max_length=30)
-
+    adres = models.CharField(max_length=30, blank=False, help_text="Straat + huisnummer")
+    telefoonnummer = models.CharField(max_length=12, blank=True, help_text="Vul 06-, +316- of Huis- nummer in")
     def __str__(self):
         return self.user.username
 

@@ -5,8 +5,6 @@ from .models import Profile, UserProfile
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
-    phone = forms.CharField()
-    biography = forms.CharField()
 
 # algemeen: This class meta gives us a nested namespace for configration and keeps the configurations at one place.
 # And within the configuration we’re saying that the model that will be affected is the User-model.
@@ -17,7 +15,7 @@ class UserRegisterForm(UserCreationForm):
         model = User
 
 # These are the fields that are going to be shown on our form.
-        fields = ['username', 'email', 'phone', 'password1', 'password2']
+        fields = ['username', 'email', 'password1', 'password2']
 
 #"a model form allows us to create a form that will work with a specific database model
 #in this case we want a form that will update our user model."
@@ -26,7 +24,8 @@ class UserRegisterForm(UserCreationForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('location', 'age')
+        fields = ('adres', 'telefoonnummer')
+
 
 
 

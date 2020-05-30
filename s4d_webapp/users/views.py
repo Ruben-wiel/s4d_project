@@ -26,7 +26,7 @@ def register(request):
         form = UserRegisterForm()
         profile_form = UserProfileForm()
 
-        context = {'form': form, 'profile_form': profile_form}
+    context = {'form': form, 'profile_form': profile_form}
     return render(request, 'users/register.html', context)
 
 #forms u_form en p_form zijn toegevoegd aan de profile view
@@ -35,7 +35,7 @@ def profile(request):
     #post request met de data van de form, door de instance=request.user, zorgt er voor
     #dat er daadwerkelijk ook iets wordt aangepast in de database
     if request.method == 'POST':
-        u_form  = UserUpdateForm(request.POST, instance=request.user)
+        u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(request.POST,
                                    request.FILES, #is voor de image data
                                    instance=request.user.profile)
