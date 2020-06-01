@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="{% static 'website/main.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'website/jenteshokje.css' %}">
     <!-- Font Awesome CSS (icons) -->
     <script src="https://kit.fontawesome.com/9012e51de6.js" crossorigin="anonymous"></script>
     <!-- <link rel="stylesheet" href="https://kit.fontawesome.com/9012e51de6.js" crossorigin="anonymous"> -->
@@ -69,17 +71,31 @@
             {% endif %}
             {% block content %}{% endblock %}
           </div>
-          <div class="col-md-4">
+          <!-- HIER STAAT DE HOE WERKT HET BLOK -->
+          <div class="testen">
             <div class="content-section">
-              <h3>Jente's hokje</h3>
-              <p class='text-muted'>hier kunnen we nog wat leuks zetten, sidebar mag nog verplaatst worden.
-                <ul class="list-group">
-                  <li class="list-group-item list-group-item-light">placeholder</li>
-                  <li class="list-group-item list-group-item-light">placeholder</li>
-                  <li class="list-group-item list-group-item-light">placeholder</li>
-                  <li class="list-group-item list-group-item-light">placeholder</li>
-                </ul>
+              <h3 class="text-center">Hoe werkt het?</h3>
+              <p class='text-muted'>
+                hier kunnen we nog wat leuks zetten, sidebar mag nog verplaatst worden.
               </p>
+                <ul class="list-group">
+                  <div class="mb-4"></div>
+                    <h4 class="text-center">Eerste stap</h4>
+                    <p class='text-muted'>
+                      hier kunnen we nog wat leuks zetten, sidebar mag nog verplaatst worden.
+                    </p>
+                    <hr class="dotted">
+                  <div class="secondstep"></div>
+                    <h4 class="text-center">Eerste stap</h4>
+                    <p class='text-muted'>
+                      hier kunnen we nog wat leuks zetten, sidebar mag nog verplaatst worden.
+                    </p>
+                  <div class="thirdstep"></div>
+                    <h4 class="text-center">Eerste stap</h4>
+                    <p class='text-muted'>
+                      hier kunnen we nog wat leuks zetten, sidebar mag nog verplaatst worden.
+                    </p>
+                </ul>
             </div>
           </div>  
         </div>
