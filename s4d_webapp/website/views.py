@@ -45,7 +45,7 @@ class PostListView(ListView):
     model = Post
     def get(self, request):
         #stap 1 voor paginator:
-        qs = Post.objects.all()
+        qs = Post.objects.all().order_by('-date_posted')
         #stap 2 voor paginator:
         paginator = Paginator(qs, 5) # Show 5 posts per page
         #stap 3 voor paginator:
@@ -56,7 +56,7 @@ class PostListView(ListView):
 ######################################################################################3
 
         #stap 1 voor paginator2:
-        categories = Category.objects.all()
+        categories = Category.objects.all().order_by('-date_posted')
         #stap 2 voor paginator2:
         paginator2 = Paginator(categories, 5) # Show 5 categories per page
         #stap 3 voor paginator:
