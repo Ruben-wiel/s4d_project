@@ -31,6 +31,9 @@ def posts(request):
     }
     return render(request, 'website/posts.html', context)
 
+def instructions(request):
+    return render(request, 'website/instructions.html')
+
 #filter view logic handler
 def is_valid_queryparam(param):
     return param != '' and param is not None

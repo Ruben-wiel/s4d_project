@@ -28,6 +28,9 @@ urlpatterns = [
     # Dit is de URL voor de bootstrap filter functie. 
     # path('test/', views.bootstrap_filter_view, name='web-test'),
 
+    #URL naar de instructiepagina
+    path('instructies/', views.instructions, name='web-instructions'),
+
     # Dit is de URL naar het overzicht van de posts per gebruiker.
     path('posts/user/<str:username>', UserPostListView.as_view(), name='user-posts'),
 
