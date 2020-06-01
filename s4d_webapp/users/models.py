@@ -1,10 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
