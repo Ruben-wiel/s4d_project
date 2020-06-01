@@ -1,7 +1,7 @@
-{% extends "website/base.html" %}
-{% block content %}
-<h3>Filter content</h3>
-<form method="GET" action=".">
+{% extends "website/base.html" %} 
+{% block content %} 
+  <h3>Filter content</h3>
+  <form method="GET" action=".">
     <div class="form-row">
         <div class="form-group col-12">
             <div class="input-group">
@@ -42,40 +42,40 @@
   
 
   {% for post in queryset %}
-<article class="media content-section">
-  <img class="rounded-circle article-img" src="{{post.author.profile.image.url }}">
-  <div class="media-body">
-    <div class="article-metadata">
-      <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
-      <small class="text-muted">{{ post.date_posted|date:"l F d, Y" }}</small>
-      <!-- Datum/tijd opmaak -->
-    </div>
-    <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
-    <h4 class="article-title">Categorie: {{ post.category }}</h4>
-    <p class="article-content">{{ post.beschrijving }}</p>
-    <!-- REWARD OPMAAK -->
-    <p class="article-reward"><b>Beloning:</b>{{ post.beloning }}</p>
-  </div>
-  <!-- FAVOURITEN KNOP VOOR DE POST -->
-  <div id="favourite-section">
-    <a href="#">
-      <i class="far fa-star"></i>
-    </a>
-  </div>
-</article>
-{% endfor %}
+    <article class="media content-section">
+      <img class="rounded-circle article-img" src="{{post.author.profile.image.url }}">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
+          <small class="text-muted">{{ post.date_posted|date:"l F d, Y" }}</small>
+          <!-- Datum/tijd opmaak -->
+        </div>
+        <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+        <h4 class="article-title">Categorie: {{ post.category }}</h4>
+        <p class="article-content">{{ post.beschrijving }}</p>
+        <!-- REWARD OPMAAK -->
+        <p class="article-reward"><b>Beloning:</b>{{ post.beloning }}</p>
+      </div>
+      <!-- FAVOURITEN KNOP VOOR DE POST -->
+      <div id="favourite-section">
+        <a href="#">
+          <i class="far fa-star"></i>
+        </a>
+      </div>
+    </article>
+  {% endfor %}
+
 <!-- Onderstaande 'pagination' functie zorgt ervoor dat niet alle posts op 1 pagina verschijnen, 
   maar per 'x' aantal. Ingesteld in de Views. -->
-  {% if is_paginated %}
 
-  {% if page_obj.has_previous %}
+  <!-- {% if page_obj.has_previous %}
     <a class="btn btn-outline-info mb-4" href="?page=1">Begin</a>
     <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Vorige</a>
   {% endif %}
 
   {% for num in page_obj.paginator.page_range %}
     {% if page_obj.number == num %}
-      <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+      <a class="btn btn-info mb-4" href="?page={{ queryset.number }}">{{ queryset.paginator.num_pages }}</a>
     {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
       <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
     {% endif %}
@@ -84,8 +84,27 @@
   {% if page_obj.has_next %}
     <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Volgende</a>
     <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
-  {% endif %}
+  {% endif %} -->
 
-{% endif %}
+  <div class="pagination">
+    <span class="step-links">
+        {% if queryset.has_previous %}
+            <a class="btn btn-outline-info mb-4" href="?page=1">&laquo; first</a>
+            <a class="btn btn-outline-info mb-4" href="?page={{ queryset.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Pagina {{ queryset.number }} van de {{ queryset.paginator.num_pages }}.
+        </span>
+
+        {% if queryset.has_next %}
+            <a class="btn btn-outline-info mb-4" href="?page={{ queryset.next_page_number }}">next</a>
+            <a class="btn btn-outline-info mb-4" href="?page={{ queryset.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+  </div>
+
+
+
 {% endblock content %}
 

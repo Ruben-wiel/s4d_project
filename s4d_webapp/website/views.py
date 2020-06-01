@@ -11,6 +11,8 @@ from django.views.generic import (
     RedirectView
 )
 from .models import Post, Category
+#paginator voor het filter systeem
+from django.core.paginator import Paginator
 
 
 def home(request):
@@ -24,7 +26,6 @@ def details(request):
 
 
 def posts(request):
-    bootstrap_filter_view()
     context = {
         'adposts': Post.objects.all(),
     }
@@ -35,36 +36,79 @@ def is_valid_queryparam(param):
     return param != '' and param is not None
 
 class PostListView(ListView):
-    model = Post
     template_name = 'website/posts.html'  # <app>/<model>_<viewtype>.html
     context_object_name = 'adposts' 
     # dit zorgt voor dat de nieuwste posts bovenaan komen te staan
     ordering = ['-date_posted']
     # paginate_by zorgt ervoor dat niet alle posts/advertenties op 1 pagina te zien zijn.
     paginate_by = 5
+    model = Post
     def get(self, request):
+        #stap 1 voor paginator:
         qs = Post.objects.all()
+        #stap 2 voor paginator:
+        paginator = Paginator(qs, 5) # Show 5 posts per page
+        #stap 3 voor paginator:
+        page = request.GET.get('page')
+        #stap 4 voor paginator:
+        rendering = paginator.get_page(page)
+
+######################################################################################3
+
+        #stap 1 voor paginator2:
         categories = Category.objects.all()
+        #stap 2 voor paginator2:
+        paginator2 = Paginator(categories, 5) # Show 5 categories per page
+        #stap 3 voor paginator:
+        page2 = request.GET.get('page')
+        #stap 4 voor paginator:
+        #rendering2 = paginator2.get_page(category)
+
+        #gebruik dit voor de template
         title_or_description_query = request.GET.get('title_or_description')
         date_min = request.GET.get('date_min') 
         date_max = request.GET.get('date_max')
         category = request.GET.get('category')
-        paginate_by = 5
+        #stap 4 voor paginator:
+        rendering2 = paginator2.get_page(category)
+        
         ordering = ['-date_posted']
         if is_valid_queryparam(title_or_description_query):
             qs = qs.filter(Q(title__icontains=title_or_description_query) 
                             | Q(beschrijving__icontains=title_or_description_query )
                             ).distinct()
+            paginator = Paginator(qs, 5) # Show 5 posts per page
+            #stap 3 voor paginator:
+            page = request.GET.get('page')
+            #stap 4 voor paginator:
+            rendering = paginator.get_page(page)
         if is_valid_queryparam(category) and category != 'Maak keuze...':
             qs = qs.filter(category__icontains=category)
+            paginator = Paginator(qs, 5) # Show 5 posts per page
+            #stap 3 voor paginator:
+            page = request.GET.get('page')
+            #stap 4 voor paginator:
+            rendering = paginator.get_page(page)
         if is_valid_queryparam(date_min):
             qs = qs.filter(date_posted__gte=date_min)
+            paginator = Paginator(qs, 5) # Show 5 posts per page
+            #stap 3 voor paginator:
+            page = request.GET.get('page')
+            #stap 4 voor paginator:
+            rendering = paginator.get_page(page)
         if is_valid_queryparam(date_max):
-            qs = qs.filter(date_posted__lt=date_max )  
+            qs = qs.filter(date_posted__lt=date_max )
+            paginator = Paginator(qs, 5) # Show 5 posts per page
+            #stap 3 voor paginator:
+            page = request.GET.get('page')
+            #stap 4 voor paginator:
+            rendering = paginator.get_page(page)  
+        
         context = {
-            'queryset': qs,
-            'categories': categories
+            'queryset': rendering,
+            'categories': rendering2,
         }
+
         Post.objects.order_by('-date_posted')
         return render(request, 'website/posts.html', context)
 
@@ -95,6 +139,11 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
+############################# favourite class #######################
+class Favourite():
+    is_favourite = False
+#####################################################################
+
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     fields = ['title', 'category', 'beschrijving', 'beloning']
@@ -115,7 +164,6 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
     success_url = '/posts'
-
     def test_func(self):
         post = self.get_object()
         if self.request.user == post.author:
