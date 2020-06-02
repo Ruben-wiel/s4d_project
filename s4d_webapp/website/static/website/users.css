@@ -1,0 +1,31 @@
+.topblock {
+    background-color: transparent;
+    width: 100%;
+    margin-top: -30px;
+    height: 310px;
+}
+
+.post-content {
+    margin-top: 2.5em;
+}
+  .testen {
+    margin-top: -1.5em;
+    visibility: hidden;
+    display: none;
+  }
+
+
+.contentverschillend {
+    margin-top: -200px;
+    display: block;
+    top: 0px;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.content-section {
+    margin:0 auto;
+}

@@ -25,14 +25,33 @@
 
 .containerhome {
     margin-top: -80px;
+    padding-left: 10px;
 }
 
 .testen {
-    margin-top: -200px;
+    margin-top: -7em;
 }
 
 .mooier {
     text-align: center;
+}
+
+.blauweknoplinks {
+    background-color: rgb(57, 92, 207);
+    color: white;
+    background: url(../../static/website/images/helping.jpg) no-repeat center;
+    width: 100%;
+}
+
+/* .blauweknoplinks:hover {
+    background: url(../../static/website/images/supermarkt.jpg) no-repeat center;
+} */
+
+.blauweknoprechts {
+    background-color: rgb(57, 92, 207);
+    color: white;
+    background: url(../../static/website/images/needhelp.jpg) no-repeat center;
+    width: 100%;
 }
 
 /* zodra je hovert over de instructies tab, 'licht' de 'hoe werkt het?' stukje op */
