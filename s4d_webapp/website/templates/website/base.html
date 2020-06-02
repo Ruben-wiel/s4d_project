@@ -8,24 +8,20 @@
  
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
     <link rel="stylesheet" type="text/css" href="{% static 'website/main.css' %}">
-
     <link rel="stylesheet" type="text/css" href="{% static 'website/jenteshokje.css' %}">
 
     <!-- Font Awesome CSS (icons) -->
     <script src="https://kit.fontawesome.com/9012e51de6.js" crossorigin="anonymous"></script>
     <!-- <link rel="stylesheet" href="https://kit.fontawesome.com/9012e51de6.js" crossorigin="anonymous"> -->
 
-
-
     {% if title %}
         <title>Voor wat hoort wat - {{ title }}</title>
     {% else %}
         <title>Voor wat hoort wat</title>
     {% endif %} 
-</head>
 
+</head>
 <body>
     <header class="site-header">
         <!-- Hier staat de navbar -->
@@ -40,8 +36,7 @@
                 <a class="nav-item nav-link" href="{% url 'web-home' %}">Home</a>
                 <a class="nav-item nav-link" href="{% url 'web-about' %}">Over ons</a>
                 <a class="nav-item nav-link" href="{% url 'web-posts' %}">Advertenties</a>
-                <a class="nav-item nav-link" href="{% url 'web-instructions' %}">Instructies</a>
-
+                <a class="nav-item nav-link" href="{% url 'web-howto' %}">How To</a>
               </div>
               <!-- Navbar Right Side -->
               <div class="navbar-nav">
@@ -66,9 +61,7 @@
       <div class="topblock">
         <div class="contentverschillend"></div>
       </div>
-
       <!-- ###############################################################################################################################################################  -->
-
           <main role="main" class="container">
             <div class="ruimteboven">
             </div>
@@ -107,7 +100,7 @@
                          Klaar de klus en ontvang je beloning!
                       </p>
                       <p class='text-muted'>
-                          Is het nog onduidelijk? ga naar <a href="/instructies/">Instructies</a>
+                          Is het nog onduidelijk? ga naar <a href="/howto/">Instructies</a>
                       </p>
                   </ul>
               </div>
@@ -128,8 +121,7 @@
               <!-- HIER STAAT DE HOE WERKT HET BLOK -->
             </div>
           </main>
-
-    
+          
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -137,5 +129,4 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
   </body>
 </body>
-
 </html>

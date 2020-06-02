@@ -1,28 +1,25 @@
-{% extends "website/base.html" %}
-{% load crispy_forms_tags %}
-{% block content %}
-    <div class="content-section">
-        <form method="POST">
-            {% csrf_token %}
-            <!-- fieldset maakt samenhangende border om content -->
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4"> Log in</legend>
-                <!-- import de form van uit de users/views.py -->
-                {{ form|crispy }}
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Log in</button>
-                <small class="text-muted ml-2">
-                    <a href="{% url 'password_reset' %}">Wachtwoord Vergeten?</a>
-                </small>
-            </div>
-        </form>
-        <div class="border-top pt-3">
-            <!-- -->
-            <small class="text-muted">
-                <!-- de href verwijst naar de url.py bestand waarin de /register de naam 'register' heeft -->
-                Wil je een account aanmaken? <a class="ml-2" href="{% url 'register' %}"> Registreren</a>
-            </small>
-        </div>
+{% extends "website/base.html" %} {% load crispy_forms_tags %} {% block content %}
+<div class="content-section">
+  <form method="POST">
+    {% csrf_token %}
+    <!-- Fieldset maakt samenhangende border om content. -->
+    <fieldset class="form-group">
+      <legend class="border-bottom mb-4">Log in</legend>
+      <!-- Import de form van uit de users/views.py. -->
+      {{ form|crispy }}
+    </fieldset>
+    <div class="form-group">
+      <button class="btn btn-outline-info" type="submit">Log in</button>
+      <small class="text-muted ml-2">
+        <a href="{% url 'password_reset' %}">Wachtwoord Vergeten?</a>
+      </small>
     </div>
+  </form>
+  <div class="border-top pt-3">
+    <small class="text-muted">
+      Wil je een account aanmaken?
+      <a class="ml-2" href="{% url 'register' %}"> Registreren</a>
+    </small>
+  </div>
+</div>
 {% endblock content %}

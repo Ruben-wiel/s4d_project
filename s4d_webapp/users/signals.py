@@ -2,9 +2,9 @@
 # Dit signaal zorgt ervoor dat een gebruiker na registratie een profiel krijgt (dus niet via de admin-site)
 # We willen een 'post_save' signal aanroepen telkens als er een User wordt gesaved.
 from django.db.models.signals import post_save
-# de verzender wordt aangeroepen:
+# De verzender wordt aangeroepen:
 from django.contrib.auth.models import User
-# de ontvanger wordt aangeroepen:
+# De ontvanger wordt aangeroepen:
 from django.dispatch import receiver
 from .models import Profile
 
