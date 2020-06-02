@@ -1,6 +1,60 @@
 {% extends "website/base.html" %}
 {% load static %}
 {% block content %}
-<link rel="stylesheet" type="text/css" href="{% static 'website/overons.css' %}">
-    <h1>Dit is de over ons pagina</h1>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{% static 'website/about.css' %}">
+</head>
+<body>
+
+<div class="content">
+
+  <h2 style="text-align:center">Ons Team</h2>
+<p style="text-align:center">Wij zijn drie studenten van de minor Scripting 4 Designers op de Hogeschool van Arnhem & Nijmegen. 
+  Voor ons eindproject hebben wij een maatschappelijk probleem proberen op te lossen door het ontwerpen van een interactieve webapplicatie. Deze applicatie is geschreven met Python en gerealiseerd door het framework Django. </p>
+
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="/static/website/images/ruben_profile.jpg" alt="Ruben" style="width:100%">
+      <div class="container">
+        <h2>Ruben van de Wiel</h2>
+        <p class="title">Co-Founder & Webdeveloper</p>
+        <p>Content Designer, Webdeveloper & Pro RuneScaper</p>
+        <p><a class="button" href="mailto:djangos4d@gmail.com">Contact</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="/static/website/images/jente_profile.jpg" alt="Jente" style="width:100%">
+      <div class="container">
+        <h2>Jente Otte</h2>
+        <div class="mt-5"></div>
+        <p class="title">Co-Founder & Webdeveloper</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p><a class="button" href="mailto:djangos4d@gmail.com">Contact</a></p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="column">
+    <div class="card">
+      <img src="/static/website/images/ramon_profile.jpg" alt="Ramon" style="width:100%">
+      <div class="container">
+        <h2>Ramon van der Stoop</h2>
+        <p class="title">Co-Founder & Webdeveloper</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p><a class="button" href="mailto:djangos4d@gmail.com">Contact</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+</body>
 {% endblock content %}
