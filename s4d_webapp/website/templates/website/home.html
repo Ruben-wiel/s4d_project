@@ -1,6 +1,7 @@
 {% extends "website/base.html" %}
+{% load static %}
 {% block content %}
-    <h1>Dit is de home pagina</h1>
+<link rel="stylesheet" type="text/css" href="{% static 'website/home.css' %}">
     <!-- Page Content -->
     <div class="container">
         <div class="card border-0 shadow my-5">

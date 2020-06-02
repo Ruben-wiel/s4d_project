@@ -41,3 +41,17 @@ hr.hr-text::before {
     text-align: center;
     width: 400px;
 }
+
+.ruimteboven {
+    position: fixed;
+    margin-top: 300px;
+    width: 10px;
+    height: 250px;
+}
+
+.header img {
+    float: left;
+    width: 100px;
+    height: 100px;
+    background: #555;
+  }
