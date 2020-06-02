@@ -34,6 +34,7 @@ html {
   
   .container {
     padding: 0 16px;
+    
   }
   
   .container::after, .row::after {
@@ -75,6 +76,10 @@ html {
     width: 100%;
     margin-top: -30px;
     height: 310px;
+}
+
+.testen {
+  margin-top: -7em;
 }
 
 
