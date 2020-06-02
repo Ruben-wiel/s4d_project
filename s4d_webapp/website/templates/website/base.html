@@ -68,62 +68,67 @@
       </div>
 
       <!-- ###############################################################################################################################################################  -->
-      <main role="main" class="container">
-        <div class="ruimteboven">
-        </div>
-        <div class="testen">
-          <div class="content-section">
-            <h3 class="text-center">Hoe werkt VoorWatHoortWat?</h3>
-            <p class='text-muted'>
-                Welkom bij VoorWatHoortWat,<br> een simpel platform waar jij jouw<br> benodigdheden kan vragen, in ruil voor <br> een
-            tegenprestatie!
-            </p>
-              <ul class="list-group">
-                <div class="mb-4"></div>
-                  <h4 class="text-center">Stap 1</h4>
-                  <p class='text-muted'>
-                    Als je nog geen acount hebt,<br> <a href="/register/">Registreer!</a>
-                  </p>
-                <div class="secondstep"></div>
-                  <h4 class="text-center">Stap 2</h4>
-                  <p class='text-muted'>
-                    <a href="/login/">Log in</a> op je account
-                  </p>
-                <div class="thirdstep"></div>
-                  <h4 class="text-center">Stap 3</h4>
-                  <p class='text-muted'>
-                     Plaats een <a href="/posts/post/new/">advertentie</a> <br>
-                      of <a href="/posts/">help</a> een ander
-                  </p>
-                  <div class="fourthstep"></div>
-                  <h4 class="text-center">Stap 4</h4>
-                  <p class='text-muted'>
-                     Reageer op een Advertentie
-                  </p>
-                  <div class="fifthstep"></div>
-                  <h4 class="text-center">Stap 5</h4>
-                  <p class='text-muted'>
-                     Klaar de klus en ontvang je beloning!
-                  </p>
-              </ul>
-          </div>
-        </div>  
-          <!-- <img src="https://media.gettyimages.com/photos/pretty-happy-woman-waving-in-dutch-landscape-picture-id531565925?s=2048x2048"  height="400"> -->
-        <div class="row">
-          <div class="col-md-8">
-            {% if messages %}
-              {% for message in messages %}
-                "alert alert-{{ message.tags}}" is een bootstrap shortcut voor een groene bar
-                <div class="alert alert-{{ message.tags}}">
-                    {{ message }}
-                </div>
-              {% endfor %}
-            {% endif %}
-            {% block content %}{% endblock %}
-          </div>
-          <!-- HIER STAAT DE HOE WERKT HET BLOK -->
-        </div>
-      </main> 
+
+          <main role="main" class="container">
+            <div class="ruimteboven">
+            </div>
+            <div class="testen">
+              <div class="content-section">
+                <h3 class="text-center">Hoe werkt VoorWatHoortWat?</h3>
+                <p class='text-muted'>
+                    Welkom bij VoorWatHoortWat,<br> een simpel platform waar jij jouw<br> benodigdheden kan vragen, in ruil voor <br> een
+                tegenprestatie!
+                </p>
+                  <ul class="list-group">
+                    <div class="mb-4"></div>
+                      <h4 class="text-center">Stap 1</h4>
+                      <p class='text-muted'>
+                        Als je nog geen acount hebt,<br> <a href="/register/">Registreer!</a>
+                      </p>
+                    <div class="secondstep"></div>
+                      <h4 class="text-center">Stap 2</h4>
+                      <p class='text-muted'>
+                        <a href="/login/">Log in</a> op je account
+                      </p>
+                    <div class="thirdstep"></div>
+                      <h4 class="text-center">Stap 3</h4>
+                      <p class='text-muted'>
+                         Plaats een <a href="/posts/post/new/">advertentie</a> <br>
+                          of <a href="/posts/">help</a> een ander
+                      </p>
+                      <div class="fourthstep"></div>
+                      <h4 class="text-center">Stap 4</h4>
+                      <p class='text-muted'>
+                         Reageer op een Advertentie
+                      </p>
+                      <div class="fifthstep"></div>
+                      <h4 class="text-center">Stap 5</h4>
+                      <p class='text-muted'>
+                         Klaar de klus en ontvang je beloning!
+                      </p>
+                      <p class='text-muted'>
+                          Is het nog onduidelijk? ga naar <a href="/instructies/">Instructies</a>
+                      </p>
+                  </ul>
+              </div>
+            </div>
+              <!-- <img src="https://media.gettyimages.com/photos/pretty-happy-woman-waving-in-dutch-landscape-picture-id531565925?s=2048x2048"  height="400"> -->
+            <div class="row">
+              <div class="col-md-8">
+                {% if messages %}
+                  {% for message in messages %}
+                    "alert alert-{{ message.tags}}" is een bootstrap shortcut voor een groene bar
+                    <div class="alert alert-{{ message.tags}}">
+                        {{ message }}
+                    </div>
+                  {% endfor %}
+                {% endif %}
+                {% block content %}{% endblock %}
+              </div>
+              <!-- HIER STAAT DE HOE WERKT HET BLOK -->
+            </div>
+          </main>
+
     
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
