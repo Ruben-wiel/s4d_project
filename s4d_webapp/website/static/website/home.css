@@ -1,0 +1,13 @@
+.topblock {
+    background-color: rgb(54, 228, 161);
+    width: 100%;
+    margin-top: -30px;
+    height: 200px;
+}
+
+/* Dit is de titel voor boven in de pagina */
+.maintitle {
+    color: white;
+    margin-left: 20%;
+    padding-top: 30px;
+}
