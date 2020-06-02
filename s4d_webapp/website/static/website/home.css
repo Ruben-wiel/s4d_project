@@ -2,7 +2,7 @@
     background-color: rgb(65, 12, 134);
     width: 100%;
     margin-top: -30px;
-    height: 200px;
+    height: 310px;
 }
 
 /* Dit is de titel voor boven in de pagina */
@@ -20,5 +20,21 @@
     bottom: 0;
     width: 100%;
     height: 100%;
-    background: url(../../static/website/images/logo1.png) no-repeat center;
+    background: url(../../static/website/images/supermarkt.jpg) no-repeat center;
 }
+
+.containerhome {
+    margin-top: -80px;
+}
+
+.testen {
+    margin-top: -200px;
+}
+
+.mooier {
+    display: block;
+    text-align: center;
+}
+
+/* zodra je hovert over de instructies tab, 'licht' de 'hoe werkt het?' stukje op */
+
