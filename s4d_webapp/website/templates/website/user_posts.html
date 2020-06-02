@@ -1,4 +1,5 @@
-{% extends "website/base.html" %} {% block content %}
+{% extends "website/base.html" %} {% load static %} {% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'website/users.css' %}">
 <h1 class="mb-3">
   Advertenties van {{ view.kwargs.username }} ({{ page_obj.paginator.count }})
 </h1>

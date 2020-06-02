@@ -1,5 +1,5 @@
-{% extends "website/base.html" %} {% load crispy_forms_tags %} {% load static %}
-{% block content %}
+{% extends "website/base.html" %} {% load crispy_forms_tags %} {% load static %} {% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'website/users.css' %}"> 
 <div class="content-section">
   <form method="POST">
     {% csrf_token %}
