@@ -39,33 +39,36 @@ containerhome p {
     border: none;
 }
 
+/* --------------------- knop links ------------------- */
+
 .blauweknoplinks {
     border-radius: 20px;
-    font-family: Coco-Gothic;
+    font-family: Coco Gothic;
     color: white;
-    background: url(../../static/website/images/helping.jpg) no-repeat center;
+    background: url(../../static/website/images/helping4.1.jpg) no-repeat center;
     font-size: 20px;
-    width: 100%;
 }
 
 .blauweknoplinks:hover {
-    background: url(../../static/website/images/helping2.jpg) no-repeat center;
+    background: url(../../static/website/images/helping4.jpg) no-repeat center;
     font-size: 20px;
     border-radius: 20px;
-    width: 100%;
 } 
 
+/* --------------------- knop rechts ------------------- */
+
 .blauweknoprechts {
+    font-family: Coco Gothic;
+    font-size: 20px;
     color: white;
-    background: url(../../static/website/images/needhelp.jpg) no-repeat center;
+    background: url(../../static/website/images/needhelp3.jpg) no-repeat center;
     border-radius: 20px;
-    width: 100%;
 }
 
 .blauweknoprechts:hover {
-    background: url(../../static/website/images/needhelp2.jpg) no-repeat center;
+    background: url(../../static/website/images/needhelp3.2.jpg) no-repeat center;
     border-radius: 20px;
-    width: 100%;
+    font-size: 20px;
 } 
 
 .contenthome p {
@@ -149,4 +152,6 @@ hr.solid {
 nav {
     background-color: rgb(41, 49, 51);
 }
+
+
 
