@@ -41,8 +41,8 @@
 }
 
 .blauweknoplinks {
-    background-color: rgb(57, 92, 207);
-    border: none;
+    border-radius: 20px;
+    font-family: Coco-Gothic;
     color: white;
     background: url(../../static/website/images/helping.jpg) no-repeat center;
     font-size: 20px;
@@ -50,23 +50,22 @@
 }
 
 .blauweknoplinks:hover {
-    background: url(../../static/website/images/supermarkt.jpg) no-repeat center;
-    font-size: 30px;
-    border: none;
+    background: url(../../static/website/images/helping2.jpg) no-repeat center;
+    font-size: 20px;
+    border-radius: 20px;
     width: 100%;
 } 
 
 .blauweknoprechts {
-    background-color: rgb(57, 92, 207);
     color: white;
     background: url(../../static/website/images/needhelp.jpg) no-repeat center;
-    border: none;
+    border-radius: 20px;
     width: 100%;
 }
 
 .blauweknoprechts:hover {
     background: url(../../static/website/images/supermarkt.jpg) no-repeat center;
-    border: none;
+    border-radius: 20px;
     width: 100%;
 } 
 
@@ -93,7 +92,7 @@
     margin-top: 30px;
     color: white;
     border: thin;
-    border-radius: 25px;
+    border-radius: 20px;
     width: 100px;
     height: 40px;
 }
@@ -145,4 +144,6 @@ hr.solid {
     border-top: 3px solid #bbb;
   }
 
-
+nav {
+    background-color: rgba(4, 96, 216, 1);
+}
