@@ -98,3 +98,52 @@
 }
 /* zodra je hovert over de instructies tab, 'licht' de 'hoe werkt het?' stukje op */
 
+.testen {
+    margin-top: -7em;
+}
+
+/* content in wrapper */
+
+.content-section {
+    border: 2px solid black;
+
+}
+
+.content-section h3{
+    font-family: Fugaz One;
+
+}
+
+.content-section h4{
+    margin-top: -5px;
+    font-family: Fugaz One;
+
+}
+
+.content-section p{
+    font-family: Coco Gothic;
+    margin-top: -5px;
+
+}
+
+.infotekst {
+    font-family: Rondalo;
+    font-size: 25px;
+
+}
+
+.titeltwee {
+    margin-top: -5px;
+    color: rgb(80, 106, 252);
+}
+
+/* Solid border */
+hr.solid {
+    border-top: 3px solid #bbb;
+  }
+
+/* Dotted border */
+hr.dotted {
+    border-top: 3px dotted #bbb;
+  }
+

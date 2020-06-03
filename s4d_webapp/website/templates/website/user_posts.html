@@ -4,28 +4,30 @@
   Advertenties van {{ view.kwargs.username }} ({{ page_obj.paginator.count }})
 </h1>
 {% for post in adposts %}
-<article class="media content-section">
-  <img
-    class="rounded-circle article-img"
-    src="{{post.author.profile.image.url }}"
-  />
-  <div class="media-body">
-    <div class="article-metadata">
-      <a class="mr-2" href="{% url 'user-posts' post.author.username %}"
-        >{{ post.author }}</a
-      >
-      <small class="text-muted">{{ post.date_posted|date:"l F d, Y" }}</small>
+<div class="spacing">
+  <article class="media content-section">
+    <img
+      class="rounded-circle article-img"
+      src="{{post.author.profile.image.url }}"
+    />
+    <div class="media-body">
+      <div class="article-metadata">
+        <a class="mr-2" href="{% url 'user-posts' post.author.username %}"
+          >{{ post.author }}</a
+        >
+        <small class="text-muted">{{ post.date_posted|date:"l F d, Y" }}</small>
+      </div>
+      <h2>
+        <a class="article-title" href="{% url 'post-detail' post.id %}"
+          >{{ post.titel }}</a
+        >
+      </h2>
+      <h4 class="article-title">Categorie: {{ post.categorie }}</h4>
+      <p class="article-content">{{ post.beschrijving }}</p>
+      <p class="article-reward"><b>Beloning:</b>{{ post.beloning }}</p>
     </div>
-    <h2>
-      <a class="article-title" href="{% url 'post-detail' post.id %}"
-        >{{ post.titel }}</a
-      >
-    </h2>
-    <h4 class="article-title">Categorie: {{ post.categorie }}</h4>
-    <p class="article-content">{{ post.beschrijving }}</p>
-    <p class="article-reward"><b>Beloning:</b>{{ post.beloning }}</p>
-  </div>
-</article>
+  </article>
+</div>
 {% endfor %}
 <!-- Onderstaande 'pagination' functie zorgt ervoor dat niet alle posts op 1 pagina verschijnen, 
   maar per 'x' aantal. Ingesteld in de Views. -->

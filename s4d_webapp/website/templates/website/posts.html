@@ -3,7 +3,7 @@
   rel="stylesheet"
   type="text/css"
   href="{% static 'website/posts.css' %}"
-/>
+>
 <main role="main" class="post-content">
   <form method="GET" action=".">
     <div class="form-row">
@@ -72,12 +72,6 @@
         <p class="article-content">{{ post.beschrijving }}</p>
         <!-- REWARD OPMAAK -->
         <p class="article-reward"><b>Beloning:</b>{{ post.beloning }}</p>
-      </div>
-      <!-- FAVOURITEN KNOP VOOR DE POST -->
-      <div id="favourite-section">
-        <a href="#">
-          <i class="far fa-star"></i>
-        </a>
       </div>
     </article>
   {% endfor %}

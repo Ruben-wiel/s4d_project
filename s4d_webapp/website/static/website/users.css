@@ -29,3 +29,11 @@
 .content-section {
     margin:0 auto;
 }
+
+.media content-section {
+  margin-top: 10px;
+}
+
+.spacing p {
+  color: green;
+}
