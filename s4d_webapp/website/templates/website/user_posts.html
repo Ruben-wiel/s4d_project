@@ -1,10 +1,16 @@
 {% extends "website/base.html" %} {% load static %} {% block content %}
-<link rel="stylesheet" type="text/css" href="{% static 'website/users.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'website/hidingelements.css' %}">
+<br>
+<br>
+<br>
+<br>
+<br>
 <h1 class="mb-3">
   Advertenties van {{ view.kwargs.username }} ({{ page_obj.paginator.count }})
 </h1>
 {% for post in adposts %}
 <!-- De div spacing is toegevoegd met poging tot ruimte tussen de verschillende posts -->
+<div class="spacing">
   <article class="media content-section">
     <img
       class="rounded-circle article-img"
