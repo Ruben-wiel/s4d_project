@@ -24,8 +24,9 @@
 }
 
 .containerhome {
-    margin-top: -80px;
+    margin-top: -60px;
     padding-left: 10px;
+    text-align: center;
 }
 
 .testen {
@@ -33,26 +34,67 @@
 }
 
 .mooier {
+    margin-top: 30px;
     text-align: center;
+    border: none;
 }
 
 .blauweknoplinks {
     background-color: rgb(57, 92, 207);
+    border: none;
     color: white;
     background: url(../../static/website/images/helping.jpg) no-repeat center;
+    font-size: 20px;
     width: 100%;
 }
 
-/* .blauweknoplinks:hover {
+.blauweknoplinks:hover {
     background: url(../../static/website/images/supermarkt.jpg) no-repeat center;
-} */
+    font-size: 30px;
+    border: none;
+    width: 100%;
+} 
 
 .blauweknoprechts {
     background-color: rgb(57, 92, 207);
     color: white;
     background: url(../../static/website/images/needhelp.jpg) no-repeat center;
+    border: none;
     width: 100%;
 }
 
+.blauweknoprechts:hover {
+    background: url(../../static/website/images/supermarkt.jpg) no-repeat center;
+    border: none;
+    width: 100%;
+} 
+
+.contenthome p {
+    text-align: center;
+    font-family: Bahnschrift;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.contenthome h1 {
+    font-family: Coco Gothic;
+    text-align: center;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.ruimte {
+    margin-top: 20px;
+}
+
+.overonsknop {
+    background-color: rgb(0, 68, 255);
+    margin-top: 30px;
+    color: white;
+    border: thin;
+    border-radius: 25px;
+    width: 100px;
+    height: 40px;
+}
 /* zodra je hovert over de instructies tab, 'licht' de 'hoe werkt het?' stukje op */
 
