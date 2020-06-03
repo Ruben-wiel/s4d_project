@@ -58,31 +58,29 @@
   </form>
   <div class="mt-4"></div>
 
-{% for post in queryset %}
-  <article class="media content-section">
-    <img
-      class="rounded-circle article-img"
-      src="{{post.author.profile.image.url }}"
-    />
-    <div class="media-body">
-      <div class="article-metadata">
-        <a class="mr-2" href="{% url 'user-posts' post.author.username %}"
-          >{{ post.author }}</a
-        >
-        <small class="text-muted">{{ post.date_posted|date:"l F d, Y" }}</small>
+  {% for post in queryset %}
+    <article class="media content-section">
+      <img class="rounded-circle article-img" src="{{post.author.profile.image.url }}">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
+          <small class="text-muted">{{ post.date_posted|date:"l F d, Y" }}</small>
+          <!-- Datum/tijd opmaak -->
+        </div>
+        <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.titel }}</a></h2>
+        <h4 class="article-title">Categorie: {{ post.category }}</h4>
+        <p class="article-content">{{ post.beschrijving }}</p>
+        <!-- REWARD OPMAAK -->
+        <p class="article-reward"><b>Beloning:</b>{{ post.beloning }}</p>
       </div>
-      <h2>
-        <a class="article-title" href="{% url 'post-detail' post.id %}"
-          >{{ post.titel }}</a
-        >
-      </h2>
-      <h4 class="article-title">Categorie: {{ post.categorie }}</h4>
-      <p class="article-content">{{ post.beschrijving }}</p>
-      <p class="article-reward"><b>Beloning:</b>{{ post.beloning }}</p>
-    </div>
-  </article>
-</main>
-{% endfor %}
+      <!-- FAVOURITEN KNOP VOOR DE POST -->
+      <div id="favourite-section">
+        <a href="#">
+          <i class="far fa-star"></i>
+        </a>
+      </div>
+    </article>
+  {% endfor %}
 
 <div class="pagination">
   <span class="step-links">
