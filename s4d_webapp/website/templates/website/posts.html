@@ -1,14 +1,19 @@
 {% extends "website/base.html" %} {% load static %} {% block content %}
+<div class="titelcontent"><h1>Zoek Naar Een Klus</h1></div>
 <link
   rel="stylesheet"
   type="text/css"
   href="{% static 'website/posts.css' %}"
 >
 
-<div></div>
+<!--<div class="postscontent">
+    <br>
+    <h1>Zoek Naar Een Klus</h1>
+</div>-->
 <main role="main" class="post-content">
   <form method="GET" action=".">
     <div class="form-row">
+        <h6>Zoek</h6>
       <div class="form-group col-12">
         <div class="input-group">
           <input

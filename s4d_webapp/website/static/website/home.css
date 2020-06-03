@@ -77,9 +77,11 @@
     margin-top: 20px;
 }
 
-.contenthome h1 {
+.titelcontent h1 {
     font-family: 'Lobster Two', cursive;
     font-size: 60px;
+    text-align: center;
+    margin-top: 25px;
 }
 
 .ruimte {
