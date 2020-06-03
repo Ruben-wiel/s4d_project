@@ -113,24 +113,17 @@ containerhome p {
 
 /* content in wrapper */
 
-.content-section {
-    border: 2px solid black;
-}
-
 .content-section h3{
-    font-family: Fugaz One;
+    font-size: 40px;
+    font-family: 'Lobster Two', cursive;
 
 }
 
 .content-section h4{
     margin-top: -5px;
-    font-family: Fugaz One;
+    font-size: 30px;
+    font-family: 'Roboto', sans-serif;
 
-}
-
-.content-section p{
-    font-family: Coco Gothic;
-    margin-top: -5px;
 }
 
 .infotekst {
