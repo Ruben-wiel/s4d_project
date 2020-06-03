@@ -63,7 +63,7 @@ containerhome p {
 }
 
 .blauweknoprechts:hover {
-    background: url(../../static/website/images/supermarkt.jpg) no-repeat center;
+    background: url(../../static/website/images/needhelp2.jpg) no-repeat center;
     border-radius: 20px;
     width: 100%;
 } 
@@ -147,5 +147,6 @@ hr.solid {
   }
 
 nav {
-    background-color: rgba(4, 96, 216, 1);
+    background-color: rgb(41, 49, 51);
 }
+
