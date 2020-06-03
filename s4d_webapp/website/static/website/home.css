@@ -78,6 +78,7 @@
 
 .contenthome h1 {
     font-family: Coco Gothic;
+    src: url(../../static/fonts/COCOGOTHIC_TRIAL.TTF);
     text-align: center;
     font-weight: 600;
 }
