@@ -29,6 +29,7 @@
     text-align: center;
 }
 
+
 .testen {
     margin-top: -7em;
 }
@@ -86,7 +87,7 @@
 }
 
 .overonsknop {
-    background-color: rgb(0, 68, 255);
+    background-color: rgba(242, 78, 19, 1);
     margin-top: 30px;
     color: white;
     border: thin;
@@ -94,17 +95,20 @@
     width: 100px;
     height: 40px;
 }
-/* zodra je hovert over de instructies tab, 'licht' de 'hoe werkt het?' stukje op */
+/* -------------------------- HOKJE --------------------- */
 
 .testen {
     margin-top: -7em;
+}
+
+.testen a{
+    color: rgba(4, 117, 216, 1);
 }
 
 /* content in wrapper */
 
 .content-section {
     border: 2px solid black;
-
 }
 
 .content-section h3{
@@ -138,6 +142,5 @@
 hr.solid {
     border-top: 3px solid #bbb;
   }
-
 
 
