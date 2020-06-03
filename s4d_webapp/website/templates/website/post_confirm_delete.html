@@ -1,17 +1,23 @@
-{% extends "website/base.html" %}
-{% block content %}
-    <div class="content-section">
-        <form method="POST">
-            {% csrf_token %}
-            <!-- fieldset maakt samenhangende border om content -->
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Verwijder Advertentie</legend>
-                <h2>Weet je zeker dat je "{{ object.titel }}" wilt verwijderen?</h2>
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-danger" type="submit">Ja, Verwijder</button>
-                <a class="btn btn-outline-secondary" href="{% url 'post-detail' object.id %}">Annuleren</a>
-            </div>
-        </form>
+{% extends "website/base.html" %} {% load static %} {% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'website/users.css' %}">
+<div class="content-section">
+  <form method="POST">
+    {% csrf_token %}
+    <!-- Fieldset maakt samenhangende border om content. -->
+    <fieldset class="form-group">
+      <legend class="border-bottom mb-4">Verwijder Advertentie</legend>
+      <h2>Weet je zeker dat je "{{ object.titel }}" wilt verwijderen?</h2>
+    </fieldset>
+    <div class="form-group">
+      <button class="btn btn-outline-danger" type="submit">
+        Ja, Verwijder
+      </button>
+      <a
+        class="btn btn-outline-secondary"
+        href="{% url 'post-detail' object.id %}"
+        >Annuleren</a
+      >
     </div>
+  </form>
+</div>
 {% endblock content %}

@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'website.apps.WebsiteConfig',
     'users.apps.UsersConfig',
     'crispy_forms',
-    #'phonenumber_field',
+    # 'phonenumber_field',
     # is voor het maken van een nette registratie page voor bootstrap.
     # Dit zijn standaard Django apps
     'django.contrib.admin',
@@ -137,17 +137,11 @@ LOGIN_REDIRECT_URL = 'web-home'
 LOGIN_URL = 'login'
 
 
-#Hier geven wij django toestemming om onze google mail te gebruiken 
+# Hier geven wij django toestemming om onze google mail te gebruiken
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-#deze gegevens kunnen nog worden verborgen m.b.v. environment variables
+# deze gegevens kunnen nog worden verborgen m.b.v. environment variables
 EMAIL_HOST_USER = 'djangos4d@gmail.com'
 EMAIL_HOST_PASSWORD = 'udlinxzdpodxidtp'
-
-#Phonenumber Settings representatie protocol
-#PHONENUMBER_DB_FORMAT = 'NATIONAL'
-#PHONENUMBER_DEFAULT_REGION = 'NL'
-
-

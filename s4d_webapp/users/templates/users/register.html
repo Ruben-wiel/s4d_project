@@ -1,27 +1,24 @@
-{% extends "website/base.html" %}
-{% load crispy_forms_tags %}
-{% load static %}
-{% block content %}
-<link rel="stylesheet" type="text/css" href="{% static 'website/users.css' %}">
-    <div class="content-section">
-        <form method="POST">
-            {% csrf_token %}
-            <!-- fieldset maakt samenhangende border om content -->
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Doe mee!</legend>
-                <!-- import de form van uit de users/views.py -->
-                {{ form|crispy }}
-                {{ profile_form|crispy}}
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Maak een account</button>
-            </div>
-        </form>
-        <div class="border-top pt-3">
-            <!-- -->
-            <small class="text-muted">
-                Heb je al een account? <a class="ml-2" href="{% url 'login' %}">Log in</a>
-            </small>
-        </div>
+{% extends "website/base.html" %} {% load crispy_forms_tags %} {% load static %} {% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'website/users.css' %}"> 
+<div class="content-section">
+  <form method="POST">
+    {% csrf_token %}
+    <!-- fieldset maakt samenhangende border om content -->
+    <fieldset class="form-group">
+      <legend class="border-bottom mb-4">Doe mee!</legend>
+      <!-- import de form van uit de users/views.py -->
+      {{ form|crispy }} {{ profile_form|crispy}}
+    </fieldset>
+    <div class="form-group">
+      <button class="btn btn-outline-info" type="submit">
+        Maak een account
+      </button>
     </div>
+  </form>
+  <div class="border-top pt-3">
+    <small class="text-muted">
+      Heb je al een account? <a class="ml-2" href="{% url 'login' %}">Log in</a>
+    </small>
+  </div>
+</div>
 {% endblock content %}
