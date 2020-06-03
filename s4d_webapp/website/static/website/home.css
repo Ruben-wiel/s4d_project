@@ -29,9 +29,8 @@
     text-align: center;
 }
 
-
-.testen {
-    margin-top: -7em;
+containerhome p {
+    font-family: 'Roboto', sans-serif;
 }
 
 .mooier {
@@ -71,8 +70,7 @@
 
 .contenthome p {
     text-align: center;
-    font-family: Bahnschrift;
-    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
     margin-top: 20px;
 }
 
@@ -100,6 +98,10 @@
 
 .testen {
     margin-top: -7em;
+}
+
+.testen p {
+    font-family: 'Roboto', sans-serif;
 }
 
 .testen a{
