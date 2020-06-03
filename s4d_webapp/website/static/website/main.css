@@ -1,10 +1,10 @@
-/* Color Theme Swatches in RGBA 
+
 .COREFLIGHTS-—-Mobile-App-1-rgba { color: rgba(4, 96, 216, 1); }
 .COREFLIGHTS-—-Mobile-App-2-rgba { color: rgba(4, 117, 216, 1); }
 .COREFLIGHTS-—-Mobile-App-3-rgba { color: rgba(30, 61, 89, 1); }
 .COREFLIGHTS-—-Mobile-App-4-rgba { color: rgba(242, 78, 19, 1); }
 .COREFLIGHTS-—-Mobile-App-5-rgba { color: rgba(242, 242, 242, 1); }
-*/
+
 
 body {
     background: #fafafa;
@@ -142,4 +142,8 @@ footer {
   padding: 3px;
   background-color: #5f788a;
   color: white;
+}
+
+nav {
+  background-color: rgba(4, 96, 216, 1);
 }
