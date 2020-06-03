@@ -141,8 +141,5 @@ hr.solid {
     border-top: 3px solid #bbb;
   }
 
-/* Dotted border */
-hr.dotted {
-    border-top: 3px dotted #bbb;
-  }
+
 
