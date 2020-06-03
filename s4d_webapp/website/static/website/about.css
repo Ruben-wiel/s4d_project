@@ -8,7 +8,13 @@ html {
 
   .content {
       margin-top: 2.5em;
+      text-align: center;
   }
+
+   .content h1 {
+    font-family: 'Lobster Two', cursive;
+    font-size: 60px;
+}
   
   .column {
     float: left;

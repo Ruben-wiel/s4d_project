@@ -4,6 +4,8 @@
   type="text/css"
   href="{% static 'website/posts.css' %}"
 >
+
+<div></div>
 <main role="main" class="post-content">
   <form method="GET" action=".">
     <div class="form-row">
@@ -25,7 +27,7 @@
     </div>
     <div class="form-row">
       <div class="form-group col-md-4">
-        <label for="publishDateMin">Publish date Minimum</label>
+        <label for="publishDateMin">Minimum Datum</label>
         <input
           type="date"
           class="form-control"
@@ -34,7 +36,7 @@
         />
       </div>
       <div class="form-group col-md-4">
-        <label for="publishDateMax">Publish date Maximum</label>
+        <label for="publishDateMax">Maximum Datum</label>
         <input
           type="date"
           class="form-control"
