@@ -71,13 +71,20 @@
 /* ----------------------------- Posts vormgeving -------------------- */
 
   .article-title {
-    color: yellow;
     font-family: 'Roboto';
+    font-weight: 200;
+  }
+
+  .article-title:hover {
+    color: rgb(242, 78, 19);
+  }
+  
+  .article-metadata {
+    color: red;
   }
 
   .article-category {
     font-family: Arial;
-    font-weight: 600;
-    color: green;
+    font-weight: 100;
   }
 
