@@ -8,7 +8,8 @@
 .post-content {
     margin-top: 2.5em;
 }
-  .testen {
+  
+.testen {
     margin-top: -1.5em;
     visibility: hidden;
     display: none;
@@ -55,4 +56,12 @@ footer {
 .row {
   width: 100%;
   margin-left: 12%;
+}
+
+/* -------------------------- footer naar beneden ------------ */
+.tothebottom {
+  margin-top: 5em;
+  width: 100%;
+  height: 300px;
+  bottom: 0%
 }
