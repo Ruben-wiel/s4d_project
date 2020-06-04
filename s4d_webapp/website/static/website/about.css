@@ -58,15 +58,17 @@ html {
     outline: 0;
     display: inline-block;
     padding: 8px;
-    color: white;
-    background-color: #000;
+    color: rgba(242, 78, 19, 1);
+    background-color:transparent;
     text-align: center;
     cursor: pointer;
     width: 100%;
+    border: 2px solid rgba(242, 78, 19, 1);
+    border-radius: 20px;
   }
   
   .button:hover {
-    background-color: #555;
+    background-color: rgba(242, 78, 19, 1);
     color: white;
   }
   

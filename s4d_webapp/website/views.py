@@ -63,7 +63,7 @@ class PostListView(ListView):
 
         ordering = ['-date_posted']
         if is_valid_queryparam(title_or_description_query):
-            qs = qs.filter(Q(title__icontains=title_or_description_query)
+            qs = qs.filter(Q(titel__icontains=title_or_description_query)
                            | Q(beschrijving__icontains=title_or_description_query)
                            ).distinct()
             paginator = Paginator(qs, 5)

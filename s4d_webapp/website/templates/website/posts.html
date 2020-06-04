@@ -60,7 +60,7 @@
       </div>
     </div>
     <div class="form-group"></div>
-    <button type="submit" class="btn btn-primary">Zoek Advertenties</button>
+    <button type="submit" class="button">Zoek Advertenties</button>
   </form>
   <div class="mt-4"></div>
 
@@ -74,7 +74,7 @@
           <!-- Datum/tijd opmaak -->
         </div>
         <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.titel }}</a></h2>
-        <h4 class="article-title">Categorie: {{ post.category }}</h4>
+        <h4 class="article-title">Categorie: {{ post.categor }}</h4>
         <p class="article-content">{{ post.beschrijving }}</p>
         <!-- REWARD OPMAAK -->
         <p class="article-reward"><b>Beloning:</b>{{ post.beloning }}</p>
@@ -85,19 +85,19 @@
 <div class="pagination">
   <span class="step-links">
       {% if queryset.has_previous %}
-          <a class="btn btn-outline-info mb-4" href="?page=1">&laquo; first</a>
-          <a class="btn btn-outline-info mb-4" href="?page={{ queryset.previous_page_number }}">previous</a>
+          <a class="btn btn-outline-secondary mb-4" href="?page=1">&laquo; first</a>
+          <a class="btn btn-outline-secondary mb-4" href="?page={{ queryset.previous_page_number }}">previous</a>
       {% endif %}
       {% for num in queryset.paginator.page_range %}
           {% if queryset.number == num %}
-              <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+              <a class="btn btn-dark mb-4" href="?page={{ num }}">{{ num }}</a>
           {% elif num > queryset.number|add:'-3' and num < queryset.number|add:'3' %}
-              <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+              <a class="btn btn-outline-secondary mb-4" href="?page={{ num }}">{{ num }}</a>
           {% endif %}
       {% endfor %}
       {% if queryset.has_next %}
-          <a class="btn btn-outline-info mb-4" href="?page={{ queryset.next_page_number }}">next</a>
-          <a class="btn btn-outline-info mb-4" href="?page={{ queryset.paginator.num_pages }}">last &raquo;</a>
+          <a class="btn btn-outline-secondary mb-4" href="?page={{ queryset.next_page_number }}">next</a>
+          <a class="btn btn-outline-secondary mb-4" href="?page={{ queryset.paginator.num_pages }}">last &raquo;</a>
       {% endif %}
   </span>
 </div>

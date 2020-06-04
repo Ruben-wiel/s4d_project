@@ -20,6 +20,25 @@
 
 }
 
+.button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: rgba(242, 78, 19, 1);
+    background-color:transparent;
+    text-align: center;
+    cursor: pointer;
+    width: 25%;
+    border: 2px solid rgba(242, 78, 19, 1);
+    border-radius: 10px;
+  }
+  
+  .button:hover {
+    background-color: rgba(242, 78, 19, 1);
+    color: white;
+  }
+
 
 .contentverschillend {
     margin-top: -50;
