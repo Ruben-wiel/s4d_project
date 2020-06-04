@@ -19,12 +19,12 @@
     {% if object.author == user %}
     <div>
       <a
-        class="btn btn-secondary btn-sm nt-1 mb-1"
+        class="btn btn-outline-secondary btn-sm nt-1 mb-1"
         href="{% url 'post-update' object.id %}"
         >Bijwerken</a
       >
       <a
-        class="btn btn-danger btn-sm nt-1 mb-1"
+        class="btn btn-outline-danger btn-sm nt-1 mb-1"
         href="{% url 'post-delete' object.id %}"
         >Verwijder</a
       >
