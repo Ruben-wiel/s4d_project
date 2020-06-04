@@ -20,22 +20,21 @@
 
 }
 
-.button {
+.button2 {
     border: none;
     outline: 0;
     display: inline-block;
     padding: 8px;
-    color: rgba(242, 78, 19, 1);
-    background-color:transparent;
+    color: white;
+    background-color: rgba(242, 78, 19, 1);
     text-align: center;
     cursor: pointer;
-    width: 25%;
     border: 2px solid rgba(242, 78, 19, 1);
     border-radius: 10px;
   }
   
-  .button:hover {
-    background-color: rgba(242, 78, 19, 1);
+  .button2:hover {
+    background-color: rgb(212, 92, 48);
     color: white;
   }
 

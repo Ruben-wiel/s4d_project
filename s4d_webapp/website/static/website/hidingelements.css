@@ -12,3 +12,19 @@
     display: none;
     visibility: hidden;
 }
+
+/* ------------------ plaats advertentie knop in de nav bar ------------ */
+
+.plaatsen {
+    color: rgb(242, 78, 19);
+    margin-top: 9px;
+    margin-right: 5px;
+  } 
+  
+  
+  .plaatsen:hover {
+    color: rgb(252, 252, 252);
+    margin-top: 9px;
+    margin-right: 5px;
+    text-decoration: none;
+  }
