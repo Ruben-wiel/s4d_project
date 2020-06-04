@@ -1,8 +1,8 @@
 .topblock {
-    background-color: rgba(242, 242, 242, 1);
+    background-color:rgb(41, 49, 51);
     width: 100%;
-    margin-top: -30px;
-    height: 310px;
+    height: 342px;
+    margin-top: 65px;
 }
 
 .post-content {
@@ -49,7 +49,7 @@
     bottom: 0px;
     width: 100%;
     height: 100%;
-    background: url(../../static/website/images/posts.jpeg) no-repeat center;
+    background: url(../../static/website/images/bannerhome8.png) no-repeat center;
 }
 .titelcontent h1 {
     font-family: 'Lobster Two', cursive;
@@ -58,54 +58,19 @@
     margin-top: 25px;
 }
 
-/* -------------------------- HOKJE --------------------- */
 
-.testen {
-    margin-top: -7em;
-}
+/* ------------------ plaats advertentie knop in de nav bar ------------ */
 
-.testen p {
-    font-family: 'Roboto', sans-serif;
-}
-
-.testen a{
-    color: rgba(4, 117, 216, 1);
-}
-
-/* content in wrapper */
-
-
-.content-section h3{
-    font-size: 40px;
-    font-family: 'Lobster Two', cursive;
-
-}
-
-.content-section h4{
-    margin-top: -5px;
-    font-size: 30px;
-    font-family: 'Roboto', sans-serif;
-
-}
-
-.infotekst {
-    font-family: Rondalo;
-    font-size: 25px;
-
-}
-
-.titeltwee {
-    margin-top: -5px;
-    color: rgb(80, 106, 252);
-}
-
-/* Solid border */
-hr.solid {
-    border-top: 3px solid #bbb;
+.plaatsen {
+    color: rgb(242, 78, 19);
+    margin-top: 9px;
+    margin-right: 5px;
+  } 
+  
+  
+  .plaatsen:hover {
+    color: rgb(252, 252, 252);
+    margin-top: 9px;
+    margin-right: 5px;
+    text-decoration: none;
   }
-
-nav {
-    background-color: rgba(4, 96, 216, 1);
-}
-
-/* ------------------------------ HOKJE EIND------------------------- */

@@ -5,7 +5,7 @@
   type="text/css"
   href="{% static 'website/posts.css' %}"
 >
-
+<link rel="stylesheet" type="text/css" href="{% static 'website/jenteshokje.css' %}">
 <!--<div class="postscontent">
     <br>
     <h1>Zoek Naar Een Klus</h1>
@@ -74,7 +74,7 @@
           <!-- Datum/tijd opmaak -->
         </div>
         <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.titel }}</a></h2>
-        <h4 class="article-title">Categorie: {{ post.categor }}</h4>
+        <h4 class="article-title">Categorie: {{ post.categorie }}</h4>
         <p class="article-content">{{ post.beschrijving }}</p>
         <!-- REWARD OPMAAK -->
         <p class="article-reward"><b>Beloning:</b>{{ post.beloning }}</p>

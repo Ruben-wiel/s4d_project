@@ -112,7 +112,7 @@ hr.hr-text::before {
 /* -------------------------- HOKJE --------------------- */
 
 .testen {
-  margin-top: -200px;
+  margin-top: -280px;
   margin-left: 850px;
   position: fixed;
   color: #000000;
@@ -133,9 +133,6 @@ hr.hr-text::before {
 
 /* content in wrapper */
 
-.content-section {
-  border: 2px solid black;
-}
 
 .content-section h3{
   font-family: 'Lobster Two', cursive;
@@ -172,6 +169,10 @@ hr.hr-text::before {
 hr.solid {
   border-top: 1px solid #293133;
   margin-top: 5px;
+}
+
+.content-section hr{
+  width: 50%;
 }
 
 nav {
