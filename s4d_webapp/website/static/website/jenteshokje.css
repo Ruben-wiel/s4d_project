@@ -103,14 +103,81 @@ hr.hr-text::before {
     transform: translate(-50%, -50%);
 }
 
+
+
+/* -------------------------- HOKJE --------------------- */
+
 .testen {
-    margin-top: -200px;
-    margin-left: 850px;
-    position: fixed;
-    color: #000000;
-    text-align: center;
-    width: 400px;
+  margin-top: -200px;
+  margin-left: 850px;
+  position: fixed;
+  color: #000000;
+  text-align: center;
+  width: 400px;
 }
+
+
+.testen p {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+}
+
+.testen a{
+  color: rgba(4, 117, 216, 1);
+}
+
+/* content in wrapper */
+
+.content-section {
+  border: 2px solid black;
+}
+
+.content-section h3{
+  font-family: 'Lobster Two', cursive;
+
+}
+
+.content-section h4{
+  margin-top: -5px;
+  color: black;
+  font-family:  'Lobster Two', cursive;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 20px;
+
+}
+
+.content-section p{
+  font-family: Coco Gothic;
+  margin-top: -5px;
+} 
+
+.infotekst {
+  font-family: Rondalo;
+  font-size: 25px;
+
+}
+
+.titeltwee {
+  margin-top: -5px;
+  color: rgb(80, 106, 252);
+}
+
+/* Solid border */
+hr.solid {
+  border-top: 1px solid #293133;
+  margin-top: 5px;
+}
+
+nav {
+  background-color: rgb(30, 61, 89, 1);
+  font-weight: 700;
+  border-bottom: white;
+  border-width: 1px;
+  border-style: solid;
+}
+
+/* -------- stond er al --------- */
 
 .ruimteboven {
     position: fixed;

@@ -106,6 +106,7 @@ containerhome p {
     height: 40px;
 }
 
+/* -------------------------------------------------- ALLE PAGINA'S ----------------------------------------------- */
 
 /* -------------------------- NAV DEVIDER --------------------- */
 
@@ -114,6 +115,9 @@ containerhome p {
     width: 100%;
 }
 
+.content-section hr{
+    width: 50%;
+}
 
 /* -------------------------- HOKJE --------------------- */
 
@@ -124,6 +128,7 @@ containerhome p {
 
 .testen p {
     font-family: 'Roboto', sans-serif;
+    font-weight: 500;
 }
 
 .testen a{
@@ -143,14 +148,18 @@ containerhome p {
 
 .content-section h4{
     margin-top: -5px;
-    font-family: Fugaz One;
+    color: black;
+    font-family:  'Lobster Two', cursive;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 20px;
 
 }
 
 .content-section p{
     font-family: Coco Gothic;
     margin-top: -5px;
-} */
+} 
 
 .infotekst {
     font-family: Rondalo;
@@ -165,7 +174,8 @@ containerhome p {
 
 /* Solid border */
 hr.solid {
-    border-top: 3px solid #bbb;
+    border-top: 1px solid #293133;
+    margin-top: 5px;
   }
 
 nav {
@@ -175,6 +185,8 @@ nav {
     border-width: 1px;
     border-style: solid;
 }
+
+/* ------------------ plaats advertentie knop in de nav bar ------------ */
 
 .plaatsen {
     color: rgb(242, 78, 19);
