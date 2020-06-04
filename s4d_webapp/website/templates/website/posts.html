@@ -74,7 +74,7 @@
           <!-- Datum/tijd opmaak -->
         </div>
         <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.titel }}</a></h2>
-        <h4 class="article-title">Categorie: {{ post.categorie }}</h4>
+        <h4 class="article-category">Categorie: {{ post.categorie }}</h4>
         <p class="article-content">{{ post.beschrijving }}</p>
         <!-- REWARD OPMAAK -->
         <p class="article-reward"><b>Beloning:</b>{{ post.beloning }}</p>

@@ -117,7 +117,7 @@ hr.hr-text::before {
   position: fixed;
   color: #000000;
   text-align: center;
-  width: 400px;
+  width: 275px;
 }
 
 
@@ -139,7 +139,7 @@ hr.hr-text::before {
 
 }
 
-.content-section h4{
+.text-center{
   margin-top: -5px;
   color: black;
   font-family:  'Lobster Two', cursive;
