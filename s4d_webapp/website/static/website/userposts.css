@@ -4,3 +4,13 @@
     width: 100%;
     margin-left: 12%;
   }
+
+  footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0%;
+    text-align: center;
+    padding: 3px;
+    background-color:rgb(41, 49, 51);
+    color: white;
+  }
