@@ -128,9 +128,6 @@ hr.hr-text::before {
 
 /* content in wrapper */
 
-.content-section {
-  border: 2px solid black;
-}
 
 .content-section h3{
   font-family: 'Lobster Two', cursive;
