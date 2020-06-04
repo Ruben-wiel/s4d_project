@@ -85,8 +85,8 @@
 <div class="pagination">
   <span class="step-links">
       {% if queryset.has_previous %}
-          <a class="btn btn-outline-secondary mb-4" href="?page=1">&laquo; first</a>
-          <a class="btn btn-outline-secondary mb-4" href="?page={{ queryset.previous_page_number }}">previous</a>
+          <a class="btn btn-outline-secondary mb-4" href="?page=1">&laquo; eerste</a>
+          <a class="btn btn-outline-secondary mb-4" href="?page={{ queryset.previous_page_number }}">vorige</a>
       {% endif %}
       {% for num in queryset.paginator.page_range %}
           {% if queryset.number == num %}
@@ -96,8 +96,8 @@
           {% endif %}
       {% endfor %}
       {% if queryset.has_next %}
-          <a class="btn btn-outline-secondary mb-4" href="?page={{ queryset.next_page_number }}">next</a>
-          <a class="btn btn-outline-secondary mb-4" href="?page={{ queryset.paginator.num_pages }}">last &raquo;</a>
+          <a class="btn btn-outline-secondary mb-4" href="?page={{ queryset.next_page_number }}">volgende</a>
+          <a class="btn btn-outline-secondary mb-4" href="?page={{ queryset.paginator.num_pages }}">laatste &raquo;</a>
       {% endif %}
   </span>
 </div>
