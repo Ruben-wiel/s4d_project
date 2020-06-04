@@ -2,11 +2,19 @@
 <link rel="stylesheet" type="text/css" href="{% static 'website/users.css' %}"> 
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{% static 'website/hidingelements.css' %}"> 
-<br>
-<br>
-<br>
-<br>
-<br>
+<br><br><br><br><br>
+<div class="row">
+  <div class="col-md-8">
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags}}">
+            {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+  <!-- HIER STAAT DE HOE WERKT HET BLOK -->
+</div>
 <div class="content-section">
   <div class="media">
     <img
