@@ -63,3 +63,19 @@
     margin-right: 5px;
     text-decoration: none;
   }
+
+
+/* ------------------- content midden -------------- */
+
+  .row {
+    width: 100%;
+    margin-left: 12%;
+  }
+
+
+/* ----------------------- hokje weg ------------------- */
+
+.testen  {
+    display: none;
+    visibility: hidden;
+}
