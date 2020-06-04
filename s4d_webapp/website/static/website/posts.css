@@ -12,13 +12,6 @@
     margin-top: -7em;
   }
 
-.postscontent h1{
-    font-family: 'Lobster Two', cursive;
-    font-size: 60px;
-    text-align: center;
-
-
-}
 
 .button2 {
     border: none;
@@ -73,3 +66,18 @@
     margin-right: 5px;
     text-decoration: none;
   }
+
+
+/* ----------------------------- Posts vormgeving -------------------- */
+
+  .article-title {
+    color: yellow;
+    font-family: 'Roboto';
+  }
+
+  .article-category {
+    font-family: Arial;
+    font-weight: 600;
+    color: green;
+  }
+
