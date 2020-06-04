@@ -46,7 +46,7 @@
               <div class="navbar-nav">
                 <!-- Zodra de gebruiker is ingelogd is deze if-statement van toepassing -->
                 {% if user.is_authenticated %}
-                  <a class="nav-item nav-link" href="{% url 'post-create' %}">Plaats Advertentie</a>
+                  <a class="plaatsen" href="{% url 'post-create' %}">Plaats Advertentie</a>
                   <a class="nav-item nav-link" href="{% url 'profile' %}">{{ user.username }}</a>
                   <a class="nav-item nav-link" href="{% url 'logout' %}">Log uit</a>
                 {% else %}
@@ -57,7 +57,7 @@
             </div>
           </div>
         </nav>
-        <div class="onepx"></div>
+        <!-- <div class="onepx"></div> -->
         <!-- afbeelding banner -->
       </header>
       <div class="topblock">
@@ -76,7 +76,6 @@
                 tegenprestatie!
                 </p> -->
                 <hr class="solid">
-                  JENTE KAN HIER NOG ANDERE DIVIDERS AANPASSEN :D
                     <div class="mb-4"></div>
                       <h4 class="text-center">Stap 1</h4>
                       <p class='nummer1'>
