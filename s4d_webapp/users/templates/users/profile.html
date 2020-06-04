@@ -36,6 +36,7 @@
       {{ u_form|crispy }} {{ p_form|crispy }}
       <p>Adres: {{ user.userprofile.adress }}</p>
       <p>Telefoonnummer: {{ user.userprofile.phone }}</p>
+      <p>Wachtwoord vergeten? Klik <a href="{% url 'password_reset' %}">hier</a> om je wachtwoord te wijzigen</p>
     </fieldset>
     <div class="form-group">
       <button class="btn btn-outline-secondary" type="submit">
