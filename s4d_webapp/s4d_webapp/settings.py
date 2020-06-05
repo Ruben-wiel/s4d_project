@@ -145,3 +145,14 @@ EMAIL_USE_TLS = True
 # deze gegevens kunnen nog worden verborgen m.b.v. environment variables
 EMAIL_HOST_USER = 'djangos4d@gmail.com'
 EMAIL_HOST_PASSWORD = 'udlinxzdpodxidtp'
+
+
+#s3 management
+AWS_ACCESS_KEY_ID='AKIAWB5PETYGJWGPH272'
+AWS_SECRET_ACCESS_KEY='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'
+AWS_STORAGE_BUCKET_NAME='django-weder-files'
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
