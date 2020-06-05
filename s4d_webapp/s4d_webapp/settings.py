@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'website.apps.WebsiteConfig',
     'users.apps.UsersConfig',
     'crispy_forms',
-    # 'phonenumber_field',
+    'storages',
     # is voor het maken van een nette registratie page voor bootstrap.
     # Dit zijn standaard Django apps
     'django.contrib.admin',

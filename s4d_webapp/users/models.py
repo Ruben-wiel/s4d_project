@@ -16,14 +16,17 @@ class Profile(models.Model):
     # Na tutorial 9 problemen met registreren, gefixt met *args & **kwargs toevoeging op lijn 24 en 25 m.b.v. volgende link:
     # https://stackoverflow.com/questions/52351756/django-typeerror-save-got-an-unexpected-keyword-argument-force-insert
 
-    def save(self, *args, **kwargs):
-        # super runned de savemethod van de parent class
-        super(Profile, self).save(*args, **kwargs)
-        img = Image.open(self.image.path)
-        if img.height > 300 or img.width > 300:
-            output_size = (300, 300)
-            img.thumbnail(output_size)
-            img.save(self.image.path)
+    # Deze functie zorgt voor het resizen van de profielfoto's
+
+    # def save(self, *args, **kwargs):
+    #     # super runned de savemethod van de parent class
+    #     # Eventueel arguments van super weg --> (Profile, self) weghalen
+    #     super(Profile, self).save(*args, **kwargs)
+    #     img = Image.open(self.image.path)
+    #     if img.height > 300 or img.width > 300:
+    #         output_size = (300, 300)
+    #         img.thumbnail(output_size)
+    #         img.save(self.image.path)
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
