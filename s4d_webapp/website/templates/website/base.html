@@ -102,7 +102,9 @@
                       </p>
                       <hr> 
                       <p>
-                        <button class="button" href="/howto">Meer weten?</button>
+                        <form action="{% url 'web-howto' %}">
+                          <button class="button" type="submit">Meer weten?</button>
+                        </form>
                       </p>
                   </ul>
               </div>
