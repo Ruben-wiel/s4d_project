@@ -1,7 +1,7 @@
 {% extends "website/base.html" %} {% load crispy_forms_tags %} {% load static %}
 {% block content %}
-<link rel="stylesheet" type="text/css" href="{% static 'website/hidingelements.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'website/users.css' %}">  
+<link rel="stylesheet" type="text/css" href="{% static 'website/website_createpost.css' %}"> 
+<link rel="stylesheet" type="text/css" href="{% static 'website/elementhide.css' %}">  
 <br><br><br><br><br>
 <div class="row">
   <div class="col-md-8">
@@ -22,7 +22,7 @@
       src="{{ user.profile.image.url }}"
     />
     <div class="media-body">
-      <h2 class="account-heading">{{ user.username }}</h2>
+      <h2 class="ad-tekst-left account-heading">{{ user.username }}</h2>
       <p class="text-secondary">{{ user.email }}</p>
       <!-- Bio & andere Assets op profiel weergeven. -->
     </div>
@@ -33,10 +33,11 @@
     <fieldset class="form-group">
       <legend class="border-bottom mb-4">Profiel Informatie</legend>
       <!-- Import de form van uit de users/views.py. -->
-      {{ u_form|crispy }} {{ p_form|crispy }}
-      <p>Adres: {{ user.userprofile.adress }}</p>
-      <p>Telefoonnummer: {{ user.userprofile.phone }}</p>
-      <p>Wachtwoord vergeten? Klik <a href="{% url 'password_reset' %}">hier</a> om je wachtwoord te wijzigen</p>
+      {{ u_form|crispy }} <br> {{ p_form|crispy }}
+      <br>
+      <p><b>Adres:</b> {{ user.userprofile.adress }}</p>
+      <p><b>Telefoonnummer:</b> {{ user.userprofile.phone }}</p>
+      <p>Wachtwoord aanpassen? Klik <a href="{% url 'password_reset' %}">hier</a> om je wachtwoord te wijzigen</p>
     </fieldset>
     <div class="form-group">
       <button class="btn btn-outline-secondary" type="submit">

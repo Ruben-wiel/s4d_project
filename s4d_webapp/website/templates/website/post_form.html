@@ -1,18 +1,14 @@
 {% extends "website/base.html" %} {% load crispy_forms_tags %} {% load static %}
 {% block content %}
-<link rel="stylesheet" type="text/css" href="{% static 'website/users.css' %}"> 
-<link rel="stylesheet" type="text/css" href="{% static 'website/hidingelements.css' %}"> 
-<br>
-<br>
-<br>
-<br>
-<br>
+<link rel="stylesheet" type="text/css" href="{% static 'website/website_createpost.css' %}"> 
+<link rel="stylesheet" type="text/css" href="{% static 'website/elementhide.css' %}"> 
+<br><br><br><br><br>
 <div class="content-section">
   <form method="POST">
     {% csrf_token %}
     <!-- Fieldset maakt samenhangende border om content. -->
     <fieldset class="form-group">
-      <legend class="border-bottom mb-4">Advertentie</legend>
+      <legend class="ad-tekst border-bottom mb-4">Jouw Weder advertentie</legend>
       <!-- Import de form van uit de users/views.py. -->
       {{ form|crispy }}
     </fieldset>

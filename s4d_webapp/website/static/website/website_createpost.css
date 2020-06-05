@@ -1,0 +1,29 @@
+footer {
+    margin-top: 5em;
+    width: 100%;
+    bottom: 0%;
+    text-align: center;
+    padding: 3px;
+    background-color:rgb(41, 49, 51);
+    color: white;
+  }
+
+  
+/* --------------- content in het midden ----------------- */
+
+.row {
+  width: 100%;
+  margin-left: 12%;
+}
+
+
+.ad-tekst {
+  font-family: 'Lobster Two', cursive;
+  font-size: 40px;
+  text-align: center;
+}
+
+.ad-tekst-left{
+  font-family: 'Lobster Two', cursive;
+  font-size: 40px;
+}
