@@ -35,8 +35,8 @@
       <!-- Import de form van uit de users/views.py. -->
       {{ u_form|crispy }} <br> {{ p_form|crispy }}
       <br>
-      <p><b>Adres:</b> {{ user.userprofile.adress }}</p>
-      <p><b>Telefoonnummer:</b> {{ user.userprofile.phone }}</p>
+      <p><b>Adres:</b> {{ user.userprofile.adres }}</p>
+      <p><b>Telefoonnummer:</b> {{ user.userprofile.telefoon }}</p>
       <p>Wachtwoord aanpassen? Klik <a href="{% url 'password_reset' %}">hier</a> om je wachtwoord te wijzigen</p>
     </fieldset>
     <div class="form-group">
