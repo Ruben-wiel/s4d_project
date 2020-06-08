@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,12 +21,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# Als dit project commercieel was, moest de Secret_key voor deployment uit de settings gehaald worden (environment var.)
 SECRET_KEY = '^9k@9i5mca5%56$oe-jmnfuzjwgrl*ye2kr$f^0k8oye59ml)i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+#Debug = True for production, False when it's deployed.
 DEBUG = True
 
-ALLOWED_HOSTS = []
+#For Deployment: Allow our webapp in Allowed_hosts
+ALLOWED_HOSTS = ['weder.herokuapp.com']
 
 
 # Application definition
@@ -124,6 +128,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+# Static_Root toegevoegd; voor Deployment met Heroku
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 # wanneer je je website gaan deployen veranderen deze locaties.
@@ -156,3 +162,6 @@ AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+#Heroku settings
+django_heroku.settings(locals())
