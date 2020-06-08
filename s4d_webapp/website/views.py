@@ -71,7 +71,7 @@ class PostListView(ListView):
             rendering = paginator.get_page(page)
 
         if is_valid_queryparam(category) and category != 'Maak keuze...':
-            qs = qs.filter(category__icontains=category)
+            qs = qs.filter(categorie__icontains=category)
             paginator = Paginator(qs, 5)
             page = request.GET.get('page')
             rendering = paginator.get_page(page)

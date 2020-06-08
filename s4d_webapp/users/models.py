@@ -30,9 +30,9 @@ class Profile(models.Model):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    adress = models.CharField(max_length=30, blank=False,
+    adres = models.CharField(max_length=30, blank=False,
                              help_text="Straat + huisnummer")
-    phone = models.CharField(
+    telefoon = models.CharField(
         max_length=12, blank=True, help_text="Vul 06-, +316- of Huis- nummer in")
 
     def __str__(self):
