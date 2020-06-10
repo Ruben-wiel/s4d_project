@@ -144,7 +144,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ['titel', 'categorie', 'beschrijving', 'beloning']
+    fields = ['titel', 'categorie','locatie', 'beschrijving', 'beloning']
 
     # de auteur wordt gelijk gezet aan de gene die dan ingelogd is, voordat de .form_valid method start.
     def form_valid(self, form):
