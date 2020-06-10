@@ -16,6 +16,20 @@ class Category(models.Model):
     def __str__(self):
         return self.CATEGORY_CHOICES
 
+class Location(models.Model):
+    LOCATION_CHOICES = (
+        ('Arnhem-Noord', 'Arnhem-Noord'),
+        ('Arnhem-Centrum', 'Arnhem-Centrum'),
+        ('Arnhem-Zuid', 'Arnhem-Zuid'),
+        ('Nijmegen-Noord', 'Nijmegen-Noord'),
+        ('Nijmegen-Centrum', 'Nijmegen-Centrum'),
+        ('Nijmegen-Zuid', 'Nijmegen-Zuid'),
+        ('Overig', 'Overig')
+    )
+
+    def __str__(self):
+        return self.LOCATION_CHOICES
+
 
 class Post(models.Model):
     titel = models.CharField(max_length=100)
@@ -27,7 +41,7 @@ class Post(models.Model):
         default=True, choices=Category.CATEGORY_CHOICES)
     date_posted = models.DateTimeField(default=timezone.now)
 
-    locatie = UserProfile.locatie
+    locatie = models.TextField(default=True, choices=Location.LOCATION_CHOICES)
 
     def __str__(self):  # Deze functie werkt als een methode per post.
         return self.titel

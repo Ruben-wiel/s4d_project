@@ -11,8 +11,7 @@ from django.views.generic import (
     RedirectView
 
 )
-from .models import Post, Category
-from users.models import Location, UserProfile
+from .models import Post, Category, Location
 from django.core.paginator import Paginator
 
 
@@ -51,7 +50,6 @@ class PostListView(ListView):
 
     def get(self, request):
         qs = Post.objects.all().order_by('-date_posted')
-        #qs2 = UserProfile.objects.all().order_by('-date_posted')
 
         title_or_description_query = request.GET.get('title_or_description')
         date_min = request.GET.get('date_min')
@@ -59,13 +57,12 @@ class PostListView(ListView):
         category = request.GET.get('category')
         location = request.GET.get('location')
 
-
+        categories = Category.objects.all().order_by('-date_posted')
         paginator = Paginator(qs, 5)
         page = request.GET.get('page')
         rendering = paginator.get_page(page)
-        categories = Category.objects.all().order_by('-date_posted')
+        
         locations = Location.objects.all().order_by('-date_posted')
-
         paginator2 = Paginator(categories, 5)
         paginator3 = Paginator(locations, 5)
 
@@ -104,9 +101,9 @@ class PostListView(ListView):
         if is_valid_queryparam(location) and location != 'Maak keuze...':
             qs = qs.filter(locatie__icontains=location)
             print("testing")
-            paginator3 = Paginator(qs, 5)
+            paginator = Paginator(qs, 5)
             page = request.GET.get('page')
-            rendering3 = paginator3.get_page(page)
+            rendering = paginator.get_page(page)
 
         context = {
             'queryset': rendering,
@@ -138,7 +135,7 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['titel', 'categorie', 'beschrijving', 'beloning']
+    fields = ['titel', 'categorie', 'locatie', 'beschrijving', 'beloning']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
