@@ -28,12 +28,30 @@ class Profile(models.Model):
     #         img.thumbnail(output_size)
     #         img.save(self.image.path)
 
+class Location(models.Model):
+    LOCATION_CHOICES = (
+        ('Arnhem-Noord', 'Arnhem-Noord'),
+        ('Arnhem-Centrum', 'Arnhem-Centrum'),
+        ('Arnhem-Zuid', 'Arnhem-Zuid'),
+        ('Nijmegen-Noord', 'Nijmegen-Noord'),
+        ('Nijmegen-Centrum', 'Nijmegen-Centrum'),
+        ('Nijmegen-Zuid', 'Nijmegen-Zuid'),
+        ('Overig', 'Overig')
+    )
+
+    def __str__(self):
+        return self.LOCATION_CHOICES
+
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    adres = models.CharField(max_length=30, blank=False,
-                             help_text="Straat + huisnummer")
+    locatie = models.TextField(default=True, choices=Location.LOCATION_CHOICES)
+    #adres = models.CharField(max_length=30, blank=False,
+    #                         help_text="Straat + huisnummer")
     telefoon = models.CharField(
         max_length=12, blank=True, help_text="Vul 06-, +316- of Huis- nummer in")
 
     def __str__(self):
         return self.user.username
+
+
+

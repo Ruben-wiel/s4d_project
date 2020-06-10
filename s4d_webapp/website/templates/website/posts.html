@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="form-row">
-      <div class="form-group col-md-4">
+      <div class="form-group col-md-3">
         <label for="publishDateMin">Minimum Datum</label>
         <input
           type="date"
@@ -35,7 +35,7 @@
           name="date_min"
         />
       </div>
-      <div class="form-group col-md-4">
+      <div class="form-group col-md-3">
         <label for="publishDateMax">Maximum Datum</label>
         <input
           type="date"
@@ -44,13 +44,26 @@
           name="date_max"
         />
       </div>
-      <div class="form-group col-md-4 col-lg-4">
+      <div class="form-group col-md-3 col-lg-3">
         <label for="category">Soort Advertentie</label>
         <select id="category" class="form-control" name="category">
           <option selected>Maak keuze...</option>
           <option>Klusjes</option>
           <option>Uitlaatservice</option>
           <option>Boodschappen</option>
+          <option>Overig</option>
+        </select>
+      </div>
+      <div class="form-group col-md-3 col-lg-3">
+        <label for="location">Locatie</label>
+        <select id="location" class="form-control" name="location">
+          <option selected>Maak keuze...</option>
+          <option>Arnhem-Noord</option>
+          <option>Arnhem-Centrum</option>
+          <option>Arnhem-Zuid</option>
+          <option>Nijmegen-Noord</option>
+          <option>Nijmegen-Centrum</option>
+          <option>Nijmegen-Zuid</option>
           <option>Overig</option>
         </select>
       </div>
@@ -66,6 +79,7 @@
       <div class="media-body">
         <div class="article-metadata">
           <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
+            <small class="text-muted"><b>{{ post.author.userprofile.locatie }}: </b></small>
           <small class="text-muted">{{ post.date_posted|date:"l F d, Y" }}</small>
           <!-- Datum/tijd opmaak -->
         </div>

@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
+from users.models import UserProfile
 
 
 class Category(models.Model):
@@ -25,6 +26,8 @@ class Post(models.Model):
     categorie = models.TextField(
         default=True, choices=Category.CATEGORY_CHOICES)
     date_posted = models.DateTimeField(default=timezone.now)
+
+    locatie = UserProfile.locatie
 
     def __str__(self):  # Deze functie werkt als een methode per post.
         return self.titel
